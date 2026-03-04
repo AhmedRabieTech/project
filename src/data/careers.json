@@ -1,0 +1,212 @@
+[
+    {
+        "id": "fullstack",
+        "title": "Software Engineer (Full-Stack)",
+        "industry": "Software Engineering",
+        "level": "Senior",
+        "description": "Build and develop integrated websites and applications using the latest technologies.",
+        "skills": [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "SQL",
+            "Git"
+        ],
+        "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97"
+    },
+    {
+        "id": "analyst",
+        "title": "Data Analyst",
+        "industry": "Data Science",
+        "level": "Mid",
+        "description": "Extract insights from big data to help companies make decisions.",
+        "skills": [
+            "SQL",
+            "Python",
+            "Tableau",
+            "Excel",
+            "Statistics"
+        ],
+        "image": "https://images.unsplash.com/photo-1551288049-bbbda1400a16"
+    },
+    {
+        "id": "uiux",
+        "title": "UI/UX Designer",
+        "industry": "Creative Design",
+        "level": "Mid",
+        "description": "Design distinctive user experiences and attractive interfaces for applications.",
+        "skills": [
+            "Figma",
+            "Adobe XD",
+            "User Research",
+            "Prototyping",
+            "Design Systems"
+        ],
+        "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5"
+    },
+    {
+        "id": "marketing_spec",
+        "title": "Digital Marketing Specialist",
+        "industry": "Strategic Marketing",
+        "level": "Junior",
+        "description": "Manage advertising campaigns and analyze consumer behavior via digital platforms.",
+        "skills": [
+            "Google Ads",
+            "SEO",
+            "Content Marketing",
+            "Social Media",
+            "Analytics"
+        ],
+        "image": "https://images.unsplash.com/photo-1533750349088-cd871a92f312"
+    },
+    {
+        "id": "android",
+        "title": "Android App Developer",
+        "industry": "Software Engineering",
+        "level": "Senior",
+        "description": "Programming smart applications working on Android using Kotlin and Java.",
+        "skills": [
+            "Kotlin",
+            "Java",
+            "Android SDK",
+            "Jetpack Compose",
+            "Retrofit"
+        ],
+        "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3"
+    },
+    {
+        "id": "frontend",
+        "title": "Frontend Developer",
+        "industry": "Software Engineering",
+        "level": "Mid",
+        "description": "Transform designs into interactive interfaces using React and modern CSS.",
+        "skills": [
+            "React",
+            "CSS",
+            "HTML5",
+            "TypeScript",
+            "Redux"
+        ],
+        "image": "https://images.unsplash.com/photo-1547658719-da2b51169166"
+    },
+    {
+        "id": "backend",
+        "title": "Backend Developer",
+        "industry": "Software Engineering",
+        "level": "Senior",
+        "description": "Build robust server-side applications and APIs using Node.js, Python, or Java.",
+        "skills": [
+            "Node.js",
+            "Python",
+            "PostgreSQL",
+            "Docker",
+            "REST API"
+        ],
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c"
+    },
+    {
+        "id": "devops",
+        "title": "DevOps Engineer",
+        "industry": "Software Engineering",
+        "level": "Senior",
+        "description": "Automate deployment pipelines and manage cloud infrastructure for scalable systems.",
+        "skills": [
+            "CI/CD",
+            "Kubernetes",
+            "AWS",
+            "Terraform",
+            "Linux"
+        ],
+        "image": "https://images.unsplash.com/photo-1667372333374-9d3d17336ed7"
+    },
+    {
+        "id": "data_scientist",
+        "title": "Data Scientist",
+        "industry": "Data Science",
+        "level": "Senior",
+        "description": "Using advanced analytics and statistical methods to solve complex business problems.",
+        "skills": [
+            "PyTorch",
+            "Pandas",
+            "Big Data",
+            "Machine Learning",
+            "R"
+        ],
+        "image": "https://images.unsplash.com/photo-1527474305487-b87b222841cc"
+    },
+    {
+        "id": "ml_engineer",
+        "title": "Machine Learning Engineer",
+        "industry": "Data Science",
+        "level": "Senior",
+        "description": "Designing and implementing machine learning models and AI systems.",
+        "skills": [
+            "Scikit-learn",
+            "NLP",
+            "TensorFlow",
+            "Feature Engineering",
+            "API"
+        ],
+        "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
+    },
+    {
+        "id": "seo",
+        "title": "SEO Specialist",
+        "industry": "Strategic Marketing",
+        "level": "Mid",
+        "description": "Optimizing search engine visibility and driving organic growth.",
+        "skills": [
+            "Link Building",
+            "GSC",
+            "Keyword Research",
+            "GA4",
+            "Content Strategy"
+        ],
+        "image": "https://images.unsplash.com/photo-1571721795195-a2ca2d3370a9"
+    },
+    {
+        "id": "social_media",
+        "title": "Social Media Manager",
+        "industry": "Strategic Marketing",
+        "level": "Junior",
+        "description": "Manage brand presence and engagement across social platforms.",
+        "skills": [
+            "Canva",
+            "Copywriting",
+            "ADS",
+            "Community Management",
+            "Strategy"
+        ],
+        "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7"
+    },
+    {
+        "id": "graphic_designer",
+        "title": "Graphic Designer",
+        "industry": "Creative Design",
+        "level": "Junior",
+        "description": "Create visual concepts to communicate ideas that inspire, inform, and captivate.",
+        "skills": [
+            "Photoshop",
+            "Illustrator",
+            "Branding",
+            "Layout",
+            "InDesign"
+        ],
+        "image": "https://images.unsplash.com/photo-1626785774573-4b799314346d"
+    },
+    {
+        "id": "motion_graphic",
+        "title": "Motion Graphics Designer",
+        "industry": "Creative Design",
+        "level": "Mid",
+        "description": "Create animated graphics and visual effects for diverse media.",
+        "skills": [
+            "After Effects",
+            "Premiere Pro",
+            "Animation",
+            "Cinema 4D",
+            "VFX"
+        ],
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f"
+    }
+]
