@@ -27,13 +27,14 @@ const Home = () => {
         <div className={`home-page ${isRtl ? 'text-end' : 'text-start'}`}>
             {/* Hero Section */}
             <div className="container-fluid px-0 hero-header overflow-hidden">
-                <div className="container-fluid py-5 px-lg-5">
+                <div className="container-fluid px-lg-5">
                     <div className="row g-5 align-items-center">
-                        <div className={`col-md-12 col-lg-7 ${isRtl ? 'pe-lg-5' : 'ps-lg-5'}`}>
+                        <div className="col-md-12 col-lg-7 d-flex flex-column align-items-center text-center">
                             <h4 className="mb-3 text-secondary fw-bold" style={{ letterSpacing: '2px' }}>{t('hero.subtitle')}</h4>
                             <h1 className="mb-4 display-3 text-primary fw-extra-bold" style={{ lineHeight: '1.2' }}>{t('hero.title')}</h1>
-                            <p className="fs-5 text-dark mb-5 w-75">{t('hero.description')}</p>
-                            <div className="search-container mt-5" style={{ maxWidth: '700px' }}>
+                            <p className="fs-5 mb-5 w-100 mx-auto" style={{ maxWidth: '600px' }}>{t('hero.description')}</p>
+
+                            <div className="search-container mt-2 w-100 mx-auto" style={{ maxWidth: '700px' }}>
                                 <div className="search-wrapper d-flex align-items-center bg-white rounded-pill shadow-xl p-2 border border-2 border-primary" style={{ height: '70px' }}>
                                     <div className={isRtl ? 'pe-4' : 'ps-4'}>
                                         <i className="fas fa-search text-primary fs-4"></i>
@@ -51,7 +52,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className={`col-md-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} d-none d-lg-block`}>
-                            <div id="heroCarousel" className="carousel slide shadow-2xl rounded-4 overflow-hidden border border-white border-4" data-bs-ride="carousel" data-bs-interval="3000">
+                            <div id="heroCarousel" className="carousel slide shadow-2xl rounded-4 overflow-hidden border border-primary border-4" data-bs-ride="carousel" data-bs-interval="3000">
                                 <div className="carousel-indicators">
                                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active"></button>
                                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -62,7 +63,7 @@ const Home = () => {
                                         <div className="position-relative">
                                             <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Career" style={{ height: '550px', objectFit: 'cover' }} />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
-                                                style={{ background: 'linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%)', backdropFilter: 'blur(6px)' }}>
+                                                style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
                                                     <i className="fas fa-rocket text-white fa-lg"></i>
                                                 </div>
@@ -77,7 +78,7 @@ const Home = () => {
                                         <div className="position-relative">
                                             <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Success" style={{ height: '550px', objectFit: 'cover' }} />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
-                                                style={{ background: 'linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%)', backdropFilter: 'blur(6px)' }}>
+                                                style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
                                                     <i className="fas fa-check-double text-white fa-lg"></i>
                                                 </div>
@@ -92,7 +93,7 @@ const Home = () => {
                                         <div className="position-relative">
                                             <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Consultation" style={{ height: '550px', objectFit: 'cover' }} />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
-                                                style={{ background: 'linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%)', backdropFilter: 'blur(6px)' }}>
+                                                style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-info rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
                                                     <i className="fas fa-user-tie text-white fa-lg"></i>
                                                 </div>
@@ -686,7 +687,7 @@ const Home = () => {
                                                     <h6 className="text-primary fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
                                                         <i className="fas fa-map-signs me-2"></i> {t('industries.details_modal.roadmap')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark" style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.roadmap`)}</p>
+                                                    <p className="mb-0 " style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.roadmap`)}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -694,7 +695,7 @@ const Home = () => {
                                                     <h6 className="text-success fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
                                                         <i className="fas fa-tools me-2"></i> {t('industries.details_modal.skills')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark" style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.skills`)}</p>
+                                                    <p className="mb-0 " style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.skills`)}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -702,7 +703,7 @@ const Home = () => {
                                                     <h6 className="text-warning fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
                                                         <i className="fas fa-money-bill-wave me-2"></i> {t('industries.details_modal.salary')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark fw-bold" style={{ fontSize: '1.1rem' }}>{t(`industries.roles_details.${selectedCareer}.salary`)}</p>
+                                                    <p className="mb-0  fw-bold" style={{ fontSize: '1.1rem' }}>{t(`industries.roles_details.${selectedCareer}.salary`)}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -710,7 +711,7 @@ const Home = () => {
                                                     <h6 className="text-info fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
                                                         <i className="fas fa-tasks me-2"></i> {t('industries.details_modal.responsibilities')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark" style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.responsibilities`)}</p>
+                                                    <p className="mb-0 " style={{ lineHeight: '1.6' }}>{t(`industries.roles_details.${selectedCareer}.responsibilities`)}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component {
                         <div className="mb-4">
                             <i className="fas fa-exclamation-circle text-danger display-1"></i>
                         </div>
-                        <h2 className="mb-3 fw-bold text-dark">Something went wrong</h2>
+                        <h2 className="mb-3 fw-bold ">Something went wrong</h2>
                         <p className="text-muted mb-4">We encountered an unexpected error. Please try refreshing the page.</p>
                         <button
                             className="btn btn-primary rounded-pill px-4 py-2 fw-bold"

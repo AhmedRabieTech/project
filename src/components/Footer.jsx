@@ -31,9 +31,9 @@ const Footer = () => {
                         </p>
 
                         <div className="social-icons">
-                            <a href="https://facebook.com/careerguidance" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+                            <a href="https://www.facebook.com/share/1BQQ1JbHdY/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
                             <a href="https://twitter.com/careerguidance" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-                            <a href="https://instagram.com/careerguidance" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/rby296938?igsh=cnZlbHRtbGcycXEx" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
                             <a href="https://linkedin.com/company/careerguidance" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
                             <a href="https://youtube.com/c/careerguidance" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="YouTube"><i className="fab fa-youtube"></i></a>
                         </div>

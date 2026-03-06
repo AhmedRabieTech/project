@@ -211,12 +211,12 @@ body {
 }
 
 .hero-header {
-    background: linear-gradient(rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.88)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(var(--hero-overlay-1), var(--hero-overlay-2)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 10rem 0 12rem 0;
-    min-height: 80vh;
+    padding: 5rem 0;
+    min-height: calc(100vh - 116px);
     display: flex;
     align-items: center;
     position: relative;

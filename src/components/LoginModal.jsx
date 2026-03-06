@@ -240,7 +240,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                                                 <i className="fas fa-user-graduate text-primary fs-4"></i>
                                             </div>
                                             <div>
-                                                <h6 className="fw-bold mb-1 text-dark">{isRtl ? 'مستكشف' : 'Explorer'}</h6>
+                                                <h6 className="fw-bold mb-1 ">{isRtl ? 'مستكشف' : 'Explorer'}</h6>
                                                 <small className="text-muted">{isRtl ? 'اكتشف مستقبلك المهني' : 'Discover your future career'}</small>
                                             </div>
                                             <i className={`fas fa-chevron-${isRtl ? 'left' : 'right'} ms-auto opacity-25`}></i>
@@ -254,7 +254,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                                                 <i className="fas fa-chalkboard-teacher text-success fs-4"></i>
                                             </div>
                                             <div>
-                                                <h6 className="fw-bold mb-1 text-dark">{isRtl ? 'موجه' : 'Mentor'}</h6>
+                                                <h6 className="fw-bold mb-1 ">{isRtl ? 'موجه' : 'Mentor'}</h6>
                                                 <small className="text-muted">{isRtl ? 'إرشاد المتعلمين وتقديم رؤى مهنية' : 'Guide learners and provide career insights'}</small>
                                             </div>
                                             <i className={`fas fa-chevron-${isRtl ? 'left' : 'right'} ms-auto opacity-25`}></i>

@@ -74,7 +74,7 @@ const UserRecommendation = () => {
     return (
         <div className={`recommendation-page bg-light pb-5 ${isRtl ? 'text-end' : 'text-start'}`}>
             {/* Dynamic Hero Section */}
-            <div className="position-relative overflow-hidden pt-5" style={{ background: 'linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%)', minHeight: '500px' }}>
+            <div className="position-relative overflow-hidden pt-5" style={{ background: 'var(--hero-gradient)', minHeight: '500px' }}>
                 {/* Decorative background circles */}
                 <div className="position-absolute rounded-circle" style={{ width: '400px', height: '400px', background: 'rgba(255,255,255,0.05)', top: '-100px', right: '-100px' }}></div>
                 <div className="position-absolute rounded-circle" style={{ width: '300px', height: '300px', background: 'rgba(0,168,204,0.1)', bottom: '-50px', left: '-50px' }}></div>
@@ -98,13 +98,13 @@ const UserRecommendation = () => {
             <div className="container position-relative" style={{ marginTop: '-120px', zIndex: 10 }}>
                 <div className="row justify-content-center">
                     <div className="col-lg-9 text-center animate__animated animate__zoomIn">
-                        <div className="card border-0 shadow-2xl rounded-4" style={{ background: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(20px)' }}>
+                        <div className="card border-0 shadow-2xl rounded-4" style={{ background: 'var(--glass-card-bg)', backdropFilter: 'blur(20px)' }}>
                             <div className="card-body p-4 p-md-5">
                                 <form onSubmit={handleRecommend}>
                                     <div className="row g-4 justify-content-center">
                                         <div className="col-md-6">
                                             <div className="form-group text-start">
-                                                <label className={`form-label fw-bold text-dark mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
+                                                <label className={`form-label fw-bold  mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
                                                     <div className={`d-inline-flex align-items-center justify-content-center text-white bg-primary rounded-circle shadow-sm ${isRtl ? 'ms-2' : 'me-2'}`} style={{ width: '35px', height: '35px' }}>
                                                         <i className="fas fa-laptop-code small"></i>
                                                     </div>
@@ -127,7 +127,7 @@ const UserRecommendation = () => {
 
                                         <div className="col-md-6">
                                             <div className="form-group text-start">
-                                                <label className={`form-label fw-bold text-dark mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
+                                                <label className={`form-label fw-bold  mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
                                                     <div className={`d-inline-flex align-items-center justify-content-center text-white bg-secondary rounded-circle shadow-sm ${isRtl ? 'ms-2' : 'me-2'}`} style={{ width: '35px', height: '35px' }}>
                                                         <i className="fas fa-lightbulb small"></i>
                                                     </div>
@@ -174,7 +174,7 @@ const UserRecommendation = () => {
                             <div className="spinner-grow text-primary mb-4" style={{ width: '4rem', height: '4rem' }} role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
-                            <h3 className="fw-bold text-dark animate__animated animate__pulse animate__infinite">
+                            <h3 className="fw-bold  animate__animated animate__pulse animate__infinite">
                                 {isRtl ? 'جاري تحليل ذكاء الأعمال وصياغة التوصيات...' : 'Analyzing Patterns & Crafting Recommendations...'}
                             </h3>
                             <p className="text-muted mt-2"><i className="fas fa-microchip me-2"></i>CareerPilot AI Engine V2.0</p>
@@ -185,7 +185,7 @@ const UserRecommendation = () => {
                                 <span className="badge bg-primary-soft text-primary px-4 py-2 rounded-pill mb-3 fw-bold fs-6 border border-primary border-opacity-25">
                                     <i className="fas fa-check-circle me-2"></i> {isRtl ? 'اكتمل التحليل الذكي' : 'AI Match Complete'}
                                 </span>
-                                <h2 className="display-5 fw-bold text-dark">{t('recommend.results_title')}</h2>
+                                <h2 className="display-5 fw-bold ">{t('recommend.results_title')}</h2>
                                 <div className="mx-auto mt-3" style={{ width: '60px', height: '4px', background: 'var(--primary)', borderRadius: '2px' }}></div>
                             </div>
 
@@ -237,7 +237,7 @@ const UserRecommendation = () => {
 
                                                     <div className="mt-auto">
                                                         <div className={`d-flex align-items-center mb-3 ${isRtl ? 'flex-row-reverse justify-content-between' : 'justify-content-between'}`}>
-                                                            <h6 className="fw-bold text-dark mb-0">
+                                                            <h6 className="fw-bold  mb-0">
                                                                 <i className={`fas fa-star text-warning ${isRtl ? 'ms-2' : 'me-2'}`}></i>
                                                                 {t('recommend.matching_skills')}
                                                             </h6>
@@ -271,7 +271,7 @@ const UserRecommendation = () => {
                                             <div className="mx-auto bg-light rounded-circle d-flex align-items-center justify-content-center mb-4" style={{ width: '100px', height: '100px' }}>
                                                 <i className="fas fa-search-minus fa-3x text-muted opacity-50"></i>
                                             </div>
-                                            <h3 className="fw-bold text-dark mb-3">{t('recommend.no_matches')}</h3>
+                                            <h3 className="fw-bold  mb-3">{t('recommend.no_matches')}</h3>
                                             <p className="text-muted lead mb-4">{t('recommend.no_matches_desc')}</p>
                                             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn btn-primary rounded-pill px-5 py-3 fw-bold shadow-sm hover-translate">
                                                 <i className={`fas fa-redo ${isRtl ? 'ms-2' : 'me-2'}`}></i>

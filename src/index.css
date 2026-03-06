@@ -1,28 +1,138 @@
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --heading-color: #111111;
+    --card-bg: #f8f9fa;
+    --nav-bg: #ffffff;
+    --border-color: #e2e8f0;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    --nav-text-color: #112233;
+    --nav-blue: #0F4CFF;
+    --nav-blue-dark: #0036cc;
+    --nav-gray: #64748b;
+    --nav-gray-light: #f1f5f9;
+    --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --hero-overlay-1: rgba(255, 255, 255, 0.82);
+    --hero-overlay-2: rgba(255, 255, 255, 0.88);
+    --hero-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --glass-bg: linear-gradient(to top, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+    --glass-card-bg: rgba(255, 255, 255, 0.95);
+}
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e4e6eb;
+    --heading-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --nav-bg: #1a1a1a;
+    --border-color: #333333;
+
+    --nav-text-color: #f8fafc;
+    --nav-blue: #3b82f6;
+    --nav-blue-dark: #2563eb;
+    --nav-gray: #94a3b8;
+    --nav-gray-light: #1e293b;
+    --nav-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    --dark: #f8fafc;
+    /* Override style.css variable */
+    --light: #1e293b;
+    --hero-overlay-1: rgba(15, 23, 42, 0.90);
+    --hero-overlay-2: rgba(15, 23, 42, 0.95);
+    --hero-gradient: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+    --glass-bg: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+    --glass-card-bg: rgba(30, 41, 59, 0.85);
+}
+
+body.dark-mode {
+    --bs-body-color: var(--text-color);
+    --bs-heading-color: var(--heading-color);
+    --bs-body-bg: var(--bg-color);
 }
 
 body {
     margin: 0;
-    display: flex;
-    place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    background-color: #ffffff;
-    color: #212529;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 #root {
     width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color) !important;
+}
+
+/* Force text and background classes to inherit or use variables to avoid invisible text */
+.text-dark,
+.text-black,
+.text-body {
+    color: inherit !important;
+}
+
+.text-muted {
+    color: var(--nav-gray) !important;
+}
+
+.bg-white {
+    background-color: var(--bg-color) !important;
+}
+
+.bg-light {
+    background-color: var(--card-bg) !important;
+}
+
+body.dark-mode * {
+    border-color: var(--border-color);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: var(--card-bg);
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+body.dark-mode input.bg-transparent {
+    background-color: transparent !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--nav-gray) !important;
+}
+
+.card,
+.modal-content-wrapper,
+.featurs-item,
+.login-form-container,
+.unified-search-container {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .card,
+body.dark-mode .login-form-container {
+    background-color: var(--glass-card-bg) !important;
+}
+
+.navbar,
+.modern-navbar {
+    background-color: var(--nav-bg) !important;
+}
+
+.btn-primary {
+    color: #fff !important;
 }

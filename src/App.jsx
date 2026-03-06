@@ -9,6 +9,7 @@ import ViewCareerPaths from './pages/ViewCareerPaths';
 import UserRecommendation from './pages/UserRecommendation';
 import Articles from './pages/Articles';
 import ArticlePage from './pages/ArticlePage';
+import Support from './pages/Support';
 import ProtectedRoute from './components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -46,6 +47,10 @@ const App = () => {
                             <Route
                                 path="/article/:id"
                                 element={<ArticlePage />}
+                            />
+                            <Route
+                                path="/support"
+                                element={<Support />}
                             />
                             <Route
                                 path="/add-career"

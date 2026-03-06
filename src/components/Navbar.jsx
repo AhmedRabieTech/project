@@ -19,6 +19,10 @@ const Navbar = () => {
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'dark';
+    });
+
     const userRef = useRef(null);
     const isAdmin = authService.isAdmin();
 
@@ -27,6 +31,16 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [isDarkMode]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -60,9 +74,10 @@ const Navbar = () => {
     };
 
     const toggleLanguage = () => i18n.changeLanguage(isRtl ? 'en' : 'ar');
+    const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
     return (
-        <header className={`modern-navbar ${scrolled ? 'scrolled' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
+        <header className={`modern-navbar ${scrolled ? 'scrolled' : ''} ${isDarkMode ? 'dark-mode' : ''}`} dir={isRtl ? 'rtl' : 'ltr'}>
             {/* Top Blue Bar */}
             <div className="top-bar">
                 <div className="top-bar-container">
@@ -78,7 +93,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-container">
-                {/* Logo */}
+                {/* Logo Section */}
                 <Link to="/" className="brand-logo" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="logo-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -90,33 +105,62 @@ const Navbar = () => {
 
                 {/* Mobile Burger Menu */}
                 <button className="mobile-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        {isMobileMenuOpen ? (
-                            <><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></>
-                        ) : (
-                            <><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></>
-                        )}
-                    </svg>
+                    <i className={`bi ${isMobileMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
                 </button>
 
                 {/* Navigation and Actions */}
                 <nav className={`navbar-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+
+                    {/* Navigation Links Section */}
                     <ul className="nav-links">
-                        <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.home')}</Link></li>
-                        <li><Link to="/career-paths" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.services')}</Link></li>
-                        <li><Link to="/recommendation" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.guidance')}</Link></li>
-                        <li><Link to="/articles" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.articles')}</Link></li>
-                        <li><a href="#" onClick={(e) => { e.preventDefault(); setIsUniModalOpen(true); setIsMobileMenuOpen(false); }}>{isRtl ? 'الجامعات الشريكة' : 'Partner Universities'}</a></li>
-                        <li><Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.support')}</Link></li>
+                        <li>
+                            <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="bi bi-house"></i> <span>{t('nav.home')}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/career-paths" onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="bi bi-briefcase"></i> <span>{t('nav.services')}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/recommendation" onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="bi bi-diagram-3"></i> <span>{t('nav.guidance')}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/articles" onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="bi bi-journal-text"></i> <span>{t('nav.articles')}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <a href="#" onClick={(e) => { e.preventDefault(); setIsUniModalOpen(true); setIsMobileMenuOpen(false); }}>
+                                <i className="bi bi-buildings"></i> <span>{isRtl ? 'الجامعات الشريكة' : 'Partner Universities'}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>
+                                <i className="bi bi-headset"></i> <span>{t('nav.support')}</span>
+                            </Link>
+                        </li>
                     </ul>
 
+                    {/* Actions Section */}
                     <div className="nav-actions">
-                        <button className="action-btn text-btn" onClick={toggleLanguage}>
-                            {isRtl ? 'English' : 'عربي'}
-                        </button>
 
+                        <div className="quick-actions">
+                            {/* Language Toggle */}
+                            <button className="action-icon-btn" onClick={toggleLanguage} title={isRtl ? 'English' : 'عربي'}>
+                                <i className="bi bi-translate"></i>
+                            </button>
 
+                            {/* Theme Toggle */}
+                            <button className="action-icon-btn" onClick={toggleTheme} title="Toggle Theme">
+                                <i className={`bi ${isDarkMode ? 'bi-sun' : 'bi-moon'}`}></i>
+                            </button>
+                        </div>
 
+                        {/* Login/Register or User Dropdown */}
                         <div className="auth-buttons">
                             {user ? (
                                 <div className="user-dropdown-wrapper" ref={userRef}>
@@ -162,18 +206,12 @@ const Navbar = () => {
             <style dangerouslySetInnerHTML={{
                 __html: `
                 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
-
+                
                 :root {
-                    --color-blue: #0F4CFF;
-                    --color-blue-dark: #0036cc;
-                    --color-white: #ffffff;
-                    --color-dark: #112233;
-                    --color-gray: #64748b;
-                    --color-gray-light: #f1f5f9;
                     --nav-height: 80px;
                     --top-bar-height: 36px;
-                    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-                    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                    --nav-bg-color: var(--bg-color);
+                    --nav-border-color: var(--border-color);
                 }
 
                 body {
@@ -186,13 +224,14 @@ const Navbar = () => {
                     left: 0;
                     right: 0;
                     z-index: 1050;
-                    background: var(--color-white);
+                    background: var(--nav-bg-color);
+                    border-bottom: 1px solid var(--nav-border-color);
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    font-family: 'Cairo', 'Inter', sans-serif;
+                    font-family: Cairo, Inter, sans-serif;
                 }
 
                 .modern-navbar.scrolled {
-                    box-shadow: var(--shadow-sm);
+                    box-shadow: var(--nav-shadow);
                 }
                 
                 .modern-navbar.scrolled .top-bar {
@@ -203,8 +242,8 @@ const Navbar = () => {
                 }
 
                 .top-bar {
-                    background: var(--color-blue);
-                    color: var(--color-white);
+                    background: var(--nav-blue);
+                    color: #ffffff;
                     height: var(--top-bar-height);
                     display: flex;
                     align-items: center;
@@ -236,6 +275,7 @@ const Navbar = () => {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    gap: 1.5rem;
                 }
 
                 .brand-logo {
@@ -244,12 +284,13 @@ const Navbar = () => {
                     gap: 0.75rem;
                     text-decoration: none;
                     z-index: 1060;
+                    flex-shrink: 0;
                 }
 
                 .logo-icon {
                     width: 40px;
                     height: 40px;
-                    background: var(--color-blue);
+                    background: var(--nav-blue);
                     border-radius: 12px;
                     display: flex;
                     align-items: center;
@@ -260,12 +301,12 @@ const Navbar = () => {
                 .logo-text {
                     font-size: 1.4rem;
                     font-weight: 800;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                     letter-spacing: -0.02em;
                 }
 
                 .logo-text span {
-                    color: var(--color-blue);
+                    color: var(--nav-blue);
                 }
 
                 .navbar-menu {
@@ -273,72 +314,77 @@ const Navbar = () => {
                     align-items: center;
                     justify-content: space-between;
                     flex: 1;
-                    margin-left: 2.5rem;
-                }
-
-                [dir="rtl"] .navbar-menu {
-                    margin-left: 0;
-                    margin-right: 2.5rem;
+                    /* Ensure navigation doesn't cross logo */
                 }
 
                 .nav-links {
                     display: flex;
                     align-items: center;
-                    gap: 1.8rem;
+                    justify-content: center;
+                    gap: 1.5rem;
                     list-style: none;
                     margin: 0;
                     padding: 0;
+                    flex: 1;
                 }
 
                 .nav-links a {
                     text-decoration: none;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                     font-size: 0.95rem;
                     font-weight: 600;
-                    transition: color 0.2s ease;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    white-space: nowrap;
                 }
 
-                .nav-links a:hover {
-                    color: var(--color-blue);
+                .nav-links a i {
+                    font-size: 1.15rem;
+                    color: var(--nav-gray);
+                    transition: color 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .nav-links a:hover,
+                .nav-links a:hover i {
+                    color: var(--nav-blue);
                 }
 
                 .nav-actions {
                     display: flex;
                     align-items: center;
                     gap: 1rem;
+                    flex-shrink: 0;
                 }
 
-                .action-btn {
-                    background: none;
+                .quick-actions {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .action-icon-btn {
+                    background: transparent;
                     border: none;
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     transition: all 0.2s ease;
-                    color: var(--color-dark);
-                }
-
-                .text-btn {
-                    font-size: 0.95rem;
-                    font-weight: 700;
-                    padding: 0.5rem 0.5rem;
-                }
-
-                .search-btn {
-                    width: 40px;
-                    height: 40px;
+                    color: var(--nav-text-color) !important;
+                    width: 38px;
+                    height: 38px;
                     border-radius: 50%;
-                    background: var(--color-gray-light);
-                    color: var(--color-dark);
+                    font-size: 1.2rem;
+                    z-index: 1061;
                 }
 
-                .action-btn:hover {
-                    color: var(--color-blue);
-                }
-                
-                .search-btn:hover {
-                    background: #e2e8f0;
+                .action-icon-btn:hover {
+                    color: var(--nav-blue);
+                    background: var(--nav-gray-light);
                 }
 
                 .auth-buttons {
@@ -346,11 +392,12 @@ const Navbar = () => {
                     align-items: center;
                     gap: 0.8rem;
                     padding-inline-start: 1rem;
+                    border-inline-start: 1px solid var(--nav-border);
                 }
 
                 .btn-login {
                     background: transparent;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                     border: 2px solid transparent;
                     font-weight: 700;
                     font-size: 0.95rem;
@@ -358,17 +405,18 @@ const Navbar = () => {
                     border-radius: 8px;
                     cursor: pointer;
                     transition: all 0.2s ease;
+                    white-space: nowrap;
                 }
 
                 .btn-login:hover {
-                    background: var(--color-gray-light);
-                    border-color: #e2e8f0;
+                    background: var(--nav-gray-light);
+                    border-color: var(--nav-border);
                 }
 
                 .btn-signup {
-                    background: var(--color-blue);
-                    color: var(--color-white);
-                    border: 2px solid var(--color-blue);
+                    background: var(--nav-blue);
+                    color: #ffffff;
+                    border: 2px solid var(--nav-blue);
                     font-weight: 700;
                     font-size: 0.95rem;
                     padding: 0.5rem 1.5rem;
@@ -376,11 +424,12 @@ const Navbar = () => {
                     cursor: pointer;
                     transition: all 0.2s ease;
                     box-shadow: 0 4px 10px rgba(15, 76, 255, 0.2);
+                    white-space: nowrap;
                 }
 
                 .btn-signup:hover {
-                    background: var(--color-blue-dark);
-                    border-color: var(--color-blue-dark);
+                    background: var(--nav-blue-dark);
+                    border-color: var(--nav-blue-dark);
                     transform: translateY(-2px);
                     box-shadow: 0 6px 15px rgba(15, 76, 255, 0.3);
                 }
@@ -399,13 +448,13 @@ const Navbar = () => {
                 }
 
                 .user-avatar-btn:hover {
-                    border-color: var(--color-blue);
+                    border-color: var(--nav-blue);
                 }
 
                 .avatar-circle {
                     width: 40px;
                     height: 40px;
-                    background: var(--color-blue);
+                    background: var(--nav-blue);
                     color: white;
                     border-radius: 50%;
                     display: flex;
@@ -418,10 +467,10 @@ const Navbar = () => {
                 .user-dropdown-menu {
                     position: absolute;
                     top: calc(100% + 10px);
-                    background: white;
+                    background: var(--nav-bg-color);
                     border-radius: 12px;
-                    box-shadow: var(--shadow-md);
-                    border: 1px solid rgba(0,0,0,0.05);
+                    box-shadow: var(--nav-shadow);
+                    border: 1px solid var(--nav-border);
                     min-width: 220px;
                     padding: 0.5rem;
                     z-index: 1060;
@@ -443,19 +492,19 @@ const Navbar = () => {
                 .user-dropdown-header strong {
                     display: block;
                     font-size: 0.95rem;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                 }
 
                 .user-dropdown-header span {
                     display: block;
                     font-size: 0.8rem;
-                    color: var(--color-gray);
+                    color: var(--nav-gray);
                     margin-top: 2px;
                 }
 
                 .dropdown-divider {
                     height: 1px;
-                    background: rgba(0,0,0,0.05);
+                    background: var(--nav-border);
                     margin: 0.25rem 0;
                 }
 
@@ -465,7 +514,7 @@ const Navbar = () => {
                     text-align: match-parent;
                     padding: 0.6rem 1rem;
                     border-radius: 8px;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                     font-weight: 600;
                     font-size: 0.9rem;
                     text-decoration: none;
@@ -480,7 +529,7 @@ const Navbar = () => {
 
                 .dropdown-item:hover {
                     background: rgba(15, 76, 255, 0.05);
-                    color: var(--color-blue);
+                    color: var(--nav-blue);
                 }
 
                 .dropdown-item.text-danger:hover {
@@ -492,15 +541,28 @@ const Navbar = () => {
                     display: none;
                     background: none;
                     border: none;
-                    color: var(--color-dark);
+                    color: var(--nav-text-color);
                     cursor: pointer;
                     padding: 0.5rem;
                     z-index: 1060;
                     transition: color 0.2s;
+                    font-size: 1.5rem;
                 }
                 
                 .mobile-toggle:hover {
-                    color: var(--color-blue);
+                    color: var(--nav-blue);
+                }
+
+                @media (max-width: 1100px) {
+                    .nav-links {
+                        gap: 1rem;
+                    }
+                    .nav-links a {
+                        font-size: 0.85rem;
+                    }
+                    .btn-login, .btn-signup {
+                        padding: 0.4rem 1rem;
+                    }
                 }
 
                 @media (max-width: 1024px) {
@@ -522,7 +584,7 @@ const Navbar = () => {
                         left: 0;
                         right: 0;
                         bottom: 0;
-                        background: var(--color-white);
+                        background: var(--nav-bg-color);
                         flex-direction: column;
                         justify-content: flex-start;
                         align-items: flex-start;
@@ -550,14 +612,15 @@ const Navbar = () => {
                         align-items: flex-start;
                         width: 100%;
                         gap: 1.2rem;
+                        justify-content: flex-start;
                     }
 
                     .nav-links a {
                         font-size: 1.2rem;
-                        display: block;
+                        display: flex;
                         width: 100%;
                         padding-bottom: 0.8rem;
-                        border-bottom: 1px solid var(--color-gray-light);
+                        border-bottom: 1px solid var(--nav-border);
                     }
 
                     .nav-actions {
@@ -566,7 +629,22 @@ const Navbar = () => {
                         align-items: flex-start;
                         margin-top: 2rem;
                         padding-top: 1rem;
+                        gap: 1.5rem;
+                    }
+
+                    .quick-actions {
+                        justify-content: flex-start;
+                        width: 100%;
                         gap: 1rem;
+                    }
+
+                    .action-icon-btn {
+                        background: var(--nav-gray-light);
+                        border-radius: 8px;
+                        width: 100%;
+                        padding: 0.8rem;
+                        justify-content: center;
+                        gap: 0.5rem;
                     }
 
                     .auth-buttons {
@@ -584,7 +662,7 @@ const Navbar = () => {
                         text-align: center;
                         padding: 0.8rem;
                         font-size: 1rem;
-                        border: 2px solid var(--color-gray-light);
+                        border: 2px solid var(--nav-border);
                     }
                     
                     .btn-signup {
@@ -594,7 +672,7 @@ const Navbar = () => {
                         font-size: 1rem;
                     }
                 }
-            `}} />
+                `}} />
         </header>
     );
 };

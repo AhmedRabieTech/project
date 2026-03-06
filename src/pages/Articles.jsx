@@ -35,12 +35,12 @@ const Articles = () => {
     return (
         <div className={`articles-page bg-light pb-5 ${isRtl ? 'text-end' : 'text-start'}`} style={{ minHeight: '100vh' }}>
             {/* Hero Section */}
-            <div className="position-relative overflow-hidden pt-5" style={{ background: 'linear-gradient(135deg, var(--dark) 0%, #0f172a 100%)', minHeight: '350px' }}>
+            <div className="position-relative overflow-hidden pt-5" style={{ background: 'var(--hero-gradient)', minHeight: '350px' }}>
                 <div className="container position-relative z-1 text-center text-white py-5">
                     <span className="badge bg-primary px-3 py-2 rounded-pill fw-bold mb-3">
                         {isRtl ? 'استعراض المقالات' : 'Explore Our Articles'}
                     </span>
-                    <h1 className="display-4 fw-extra-bold mb-4" style={{ letterSpacing: '-1.5px' }}>
+                    <h1 className="display-4 fw-extra-bold mb-4 text-white" style={{ letterSpacing: '-1.5px', color: 'white' }}>
                         {isRtl ? 'مكتبة المعرفة' : 'Knowledge Hub'}
                     </h1>
 
@@ -125,7 +125,7 @@ const Articles = () => {
                                                     <div className="mb-2 text-muted small fw-bold">
                                                         <i className="far fa-calendar-alt me-2"></i> {article.date}
                                                     </div>
-                                                    <h4 className="fw-extra-bold text-dark mb-3" style={{ lineHeight: '1.4' }}>{article.title[lang]}</h4>
+                                                    <h4 className="fw-extra-bold mb-3" style={{ lineHeight: '1.4' }}>{article.title[lang]}</h4>
                                                     <p className="text-muted mb-0 flex-grow-1" style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>{article.excerpt[lang]}</p>
                                                     <div className="mt-4 pt-3 border-top d-flex align-items-center">
                                                         <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style={{ width: '35px', height: '35px', fontSize: '0.8rem' }}>
@@ -158,10 +158,10 @@ const Articles = () => {
                                                         <span className="badge bg-primary-soft text-primary rounded-pill px-3 py-1 mb-2 fw-bold">
                                                             {t(`articles_page.categories.${article.category}`)}
                                                         </span>
-                                                        <h4 className="fw-extra-bold text-dark">{article.title[lang]}</h4>
+                                                        <h4 className="fw-extra-bold">{article.title[lang]}</h4>
                                                         <hr className="my-3 opacity-10" />
                                                     </div>
-                                                    <div className="article-full-text" style={{ lineHeight: '2', fontSize: '1.05rem', color: '#1e293b' }}>
+                                                    <div className="article-full-text" style={{ lineHeight: '2', fontSize: '1.05rem' }}>
                                                         {article.content[lang].split('\n\n').map((para, i) => (
                                                             <p key={i} className="mb-3">{para}</p>
                                                         ))}

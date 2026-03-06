@@ -231,7 +231,7 @@ const ViewCareerPaths = () => {
                                     <i className="fas fa-search-minus fa-4x text-muted opacity-50"></i>
                                 </div>
                             </div>
-                            <h3 className="fw-bold text-dark">{t('browse.no_results')}</h3>
+                            <h3 className="fw-bold ">{t('browse.no_results')}</h3>
                             <p className="text-muted fs-5">{t('browse.no_results_desc')}</p>
                             <button className="btn btn-primary rounded-pill px-5 py-3 mt-3 fw-bold" onClick={() => { setSearchTerm(''); setSelectedIndustry(''); }}>
                                 <i className="fas fa-sync-alt me-2"></i> Clear All Filters
@@ -284,7 +284,7 @@ const ViewCareerPaths = () => {
                                                     <h6 className="text-primary fw-bold text-uppercase mb-3">
                                                         <i className={`fas fa-map-signs ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.roadmap')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark small">{t(`industries.roles_details.${selectedCareer.id}.roadmap`, 'Defined professional path from junior to senior levels.')}</p>
+                                                    <p className="mb-0  small">{t(`industries.roles_details.${selectedCareer.id}.roadmap`, 'Defined professional path from junior to senior levels.')}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -304,7 +304,7 @@ const ViewCareerPaths = () => {
                                                     <h6 className="text-warning fw-bold text-uppercase mb-3">
                                                         <i className={`fas fa-money-bill-wave ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.salary')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark fw-bold">{t(`industries.roles_details.${selectedCareer.id}.salary`, 'Competitive Market Salary')}</p>
+                                                    <p className="mb-0  fw-bold">{t(`industries.roles_details.${selectedCareer.id}.salary`, 'Competitive Market Salary')}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -312,7 +312,7 @@ const ViewCareerPaths = () => {
                                                     <h6 className="text-info fw-bold text-uppercase mb-3">
                                                         <i className={`fas fa-tasks ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.responsibilities')}
                                                     </h6>
-                                                    <p className="mb-0 text-dark small">{t(`industries.roles_details.${selectedCareer.id}.responsibilities`, 'Key operational tasks and strategic objectives.')}</p>
+                                                    <p className="mb-0  small">{t(`industries.roles_details.${selectedCareer.id}.responsibilities`, 'Key operational tasks and strategic objectives.')}</p>
                                                 </div>
                                             </div>
                                         </div>

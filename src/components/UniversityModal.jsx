@@ -103,7 +103,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
                 }
 
                 .uni-modal-container {
-                    background: rgba(255, 255, 255, 0.98);
+                    background: var(--bg-color);
                     width: 100%;
                     max-width: 950px;
                     max-height: 85vh;
@@ -114,6 +114,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
                     font-family: 'Poppins', 'Inter', sans-serif;
                     position: relative;
+                    border: 1px solid var(--border-color);
                 }
 
                 .rtl { direction: rtl; }
@@ -123,19 +124,19 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    border-bottom: 1px solid #f1f5f9;
+                    border-bottom: 1px solid var(--border-color);
                     flex-shrink: 0;
                 }
 
                 .modal-title-custom {
                     font-weight: 700;
-                    color: #0f172a;
+                    color: var(--heading-color);
                     margin: 0;
                     font-size: 1.4rem;
                 }
 
                 .modal-close-icon {
-                    background: #f1f5f9;
+                    background: var(--card-bg);
                     border: none;
                     width: 36px;
                     height: 36px;
@@ -143,8 +144,9 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    color: #64748b;
+                    color: var(--text-color);
                     transition: all 0.2s;
+                    border: 1px solid var(--border-color);
                 }
 
                 .modal-close-icon:hover {
@@ -156,7 +158,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     padding: 32px;
                     overflow-y: auto;
                     flex-grow: 1;
-                    background: #fafafa;
+                    background: var(--bg-color);
                 }
 
                 /* Responsive Grid */
@@ -167,7 +169,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
                 }
 
                 .uni-interactive-card {
-                    background: white;
+                    background: var(--card-bg);
                     border-radius: 12px;
                     padding: 24px;
                     text-decoration: none;
@@ -175,14 +177,14 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     flex-direction: column;
                     align-items: center;
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                    border: 1px solid #e2e8f0;
+                    border: 1px solid var(--border-color);
                     text-align: center;
                 }
 
                 .uni-interactive-card:hover, .uni-interactive-card:focus {
                     transform: translateY(-5px);
-                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-                    border-color: #3b82f6;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+                    border-color: var(--primary);
                     outline: none;
                 }
 
@@ -195,6 +197,8 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     align-items: center;
                     justify-content: center;
                     padding: 8px;
+                    background: white; /* Keep white for logos that expect it */
+                    border-radius: 8px;
                 }
 
                 .uni-logo-fixed {
@@ -209,7 +213,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
 
                 .uni-card-title {
                     font-weight: 600;
-                    color: #1e293b;
+                    color: var(--heading-color);
                     font-size: 1rem;
                     margin-bottom: 12px;
                     line-height: 1.5;
@@ -219,25 +223,25 @@ const UniversityModal = ({ isOpen, onClose }) => {
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
-                    color: #2563eb;
+                    color: white;
                     font-size: 0.85rem;
                     font-weight: 600;
                     padding: 8px 16px;
-                    background: #eff6ff;
+                    background: var(--primary);
                     border-radius: 6px;
                     transition: 0.2s;
                     width: 100%;
                 }
 
                 .uni-interactive-card:hover .uni-cta-wrapper {
-                    background: #2563eb;
+                    background: var(--nav-blue-dark);
                     color: white;
                 }
 
                 .modal-footer-fixed {
                     padding: 16px 32px;
-                    background: white;
-                    border-top: 1px solid #f1f5f9;
+                    background: var(--bg-color);
+                    border-top: 1px solid var(--border-color);
                     display: flex;
                     justify-content: flex-end;
                     flex-shrink: 0;
@@ -246,7 +250,7 @@ const UniversityModal = ({ isOpen, onClose }) => {
                 .btn-confirm-close {
                     padding: 10px 24px;
                     border-radius: 8px;
-                    background: #0f172a;
+                    background: var(--primary);
                     color: white;
                     border: none;
                     font-weight: 600;

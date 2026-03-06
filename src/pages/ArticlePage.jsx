@@ -68,7 +68,7 @@ const ArticlePage = () => {
                                 </div>
 
                                 {/* Title */}
-                                <h1 className="display-4 fw-extra-bold text-dark mb-4" style={{ letterSpacing: '-1px', lineHeight: '1.2' }}>
+                                <h1 className="display-4 fw-extra-bold  mb-4" style={{ letterSpacing: '-1px', lineHeight: '1.2' }}>
                                     {article.title[lang]}
                                 </h1>
 
@@ -79,7 +79,7 @@ const ArticlePage = () => {
                                             {article.author.name.charAt(0)}
                                         </div>
                                         <div className={`ms-3 ${isRtl ? 'me-3 ms-0' : ''}`}>
-                                            <h5 className="fw-bold text-dark mb-1">{article.author.name}</h5>
+                                            <h5 className="fw-bold  mb-1">{article.author.name}</h5>
                                             <span className="text-primary fw-medium">{article.author.role}</span>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@ const ArticlePage = () => {
                                 {/* Article Content */}
                                 <div className="article-full-content px-lg-4">
                                     {article.content[lang].split('\n\n').map((paragraph, i) => (
-                                        <p key={i} className="mb-4" style={{ fontSize: '1.2rem', lineHeight: '2.1', color: '#334155' }}>
+                                        <p key={i} className="mb-4" style={{ fontSize: '1.2rem', lineHeight: '2.1' }}>
                                             {i === 0 && (
                                                 <span className={`float-${isRtl ? 'end' : 'start'} fw-extra-bold text-primary display-2 lh-1 me-3 drop-cap`} style={{ fontFamily: 'Georgia, serif' }}>
                                                     {paragraph.charAt(0)}
