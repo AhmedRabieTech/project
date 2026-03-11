@@ -6,6 +6,9 @@
     --nav-bg: #ffffff;
     --border-color: #e2e8f0;
 
+    --hover-bg: #f1f5f9;
+    --hover-text: var(--primary);
+
     --nav-text-color: #112233;
     --nav-blue: #0F4CFF;
     --nav-blue-dark: #0036cc;
@@ -26,6 +29,9 @@
     --card-bg: #1e1e1e;
     --nav-bg: #1a1a1a;
     --border-color: #333333;
+
+    --hover-bg: #2d2d2d;
+    --hover-text: #ffffff;
 
     --nav-text-color: #f8fafc;
     --nav-blue: #3b82f6;

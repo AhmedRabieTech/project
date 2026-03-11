@@ -176,13 +176,13 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
 
     // Helper to render password input with toggle
     const renderPasswordInput = (isRegister = false) => (
-        <div className="input-group">
-            <span className="input-group-text bg-light border-0 px-3">
-                <i className="fas fa-lock text-muted"></i>
-            </span>
+        <div className="modern-input-group position-relative">
+            <div className="input-icon-wrapper">
+                <i className="fas fa-lock"></i>
+            </div>
             <input
                 type={showPassword ? "text" : "password"}
-                className={`form-control bg-light border-0 py-3 ${isRegister && passError ? 'is-invalid' : ''}`}
+                className={`modern-input ${isRegister && passError ? 'is-invalid' : ''}`}
                 placeholder="••••••••"
                 required
                 value={password}
@@ -190,7 +190,7 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
             />
             <button
                 type="button"
-                className="btn bg-light border-0 text-muted px-3"
+                className="password-toggle-btn"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex="-1"
             >
@@ -270,13 +270,13 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                         <form onSubmit={handleRegisterStep} className="animate__animated animate__fadeIn">
                             <div className="mb-3">
                                 <label className="form-label small fw-bold text-secondary mb-2">{isRtl ? 'الاسم بالكامل' : 'Full Name'}</label>
-                                <div className="input-group">
-                                    <span className="input-group-text bg-light border-0 px-3">
-                                        <i className="fas fa-user text-muted"></i>
-                                    </span>
+                                <div className="modern-input-group position-relative">
+                                    <div className="input-icon-wrapper">
+                                        <i className="fas fa-user"></i>
+                                    </div>
                                     <input
                                         type="text"
-                                        className={`form-control bg-light border-0 py-3 ${nameError ? 'is-invalid' : ''}`}
+                                        className={`modern-input ${nameError ? 'is-invalid' : ''}`}
                                         placeholder={isRtl ? 'أدخل اسمك' : 'Enter your name'}
                                         required
                                         value={name}
@@ -287,13 +287,13 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                             </div>
                             <div className="mb-3">
                                 <label className="form-label small fw-bold text-secondary mb-2">{isRtl ? 'البريد الإلكتروني' : 'Email Address'}</label>
-                                <div className="input-group">
-                                    <span className="input-group-text bg-light border-0 px-3">
-                                        <i className="fas fa-envelope text-muted"></i>
-                                    </span>
+                                <div className="modern-input-group position-relative">
+                                    <div className="input-icon-wrapper">
+                                        <i className="fas fa-envelope"></i>
+                                    </div>
                                     <input
                                         type="email"
-                                        className={`form-control bg-light border-0 py-3 ${emailError ? 'is-invalid' : ''}`}
+                                        className={`modern-input ${emailError ? 'is-invalid' : ''}`}
                                         placeholder="user@example.com"
                                         required
                                         value={email}
@@ -346,13 +346,13 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                         <form onSubmit={handleLoginStep} className="animate__animated animate__fadeIn">
                             <div className="mb-3">
                                 <label className="form-label small fw-bold text-secondary mb-2">{isRtl ? 'البريد الإلكتروني' : 'Email Address'}</label>
-                                <div className="input-group">
-                                    <span className="input-group-text bg-light border-0 px-3">
-                                        <i className="fas fa-user-circle text-muted"></i>
-                                    </span>
+                                <div className="modern-input-group position-relative">
+                                    <div className="input-icon-wrapper">
+                                        <i className="fas fa-user-circle"></i>
+                                    </div>
                                     <input
                                         type="email"
-                                        className="form-control bg-light border-0 py-3"
+                                        className="modern-input"
                                         placeholder="user@example.com"
                                         required
                                         value={email}
@@ -391,10 +391,66 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                 .bg-primary-soft { background-color: rgba(42, 82, 190, 0.1); }
                 .bg-dark-soft { background-color: rgba(30, 41, 59, 0.1); }
                 .bg-success-soft { background-color: rgba(16, 185, 129, 0.1); }
-                .account-type-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 2px solid #f1f5f9; }
-                .account-type-card:hover { border-color: var(--primary) !important; background-color: #f8fbff !important; transform: translateY(-3px); }
+                .account-type-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 2px solid var(--border-color); background-color: var(--card-bg); }
+                .account-type-card:hover { border-color: var(--primary) !important; background-color: var(--hover-bg) !important; transform: translateY(-3px); }
                 .hover-opacity-100:hover { opacity: 1 !important; }
-                input.form-control:focus { background-color: #fff !important; box-shadow: 0 0 0 3px rgba(42, 82, 190, 0.15) !important; }
+                
+                /* Modern Input Styles */
+                .modern-input-group {
+                    display: flex;
+                    align-items: center;
+                    background: var(--nav-gray-light);
+                    border: 2px solid transparent;
+                    border-radius: 16px;
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                }
+                .dark-mode .modern-input-group {
+                    background: #1e293b;
+                }
+                .modern-input-group:focus-within {
+                    background: var(--bg-color);
+                    border-color: var(--primary);
+                    box-shadow: 0 0 0 4px rgba(42, 82, 190, 0.1), 0 10px 20px rgba(0, 0, 0, 0.05);
+                    transform: translateY(-1px);
+                }
+                .input-icon-wrapper {
+                    padding: 0 16px;
+                    color: var(--nav-gray);
+                    font-size: 1.1rem;
+                    transition: color 0.3s ease;
+                }
+                .modern-input-group:focus-within .input-icon-wrapper {
+                    color: var(--primary);
+                }
+                .modern-input {
+                    border: none !important;
+                    background: transparent !important;
+                    padding: 14px 16px 14px 0 !important;
+                    width: 100%;
+                    font-weight: 500;
+                    color: var(--text-color) !important;
+                    outline: none !important;
+                    font-size: 0.95rem;
+                }
+                [dir="rtl"] .modern-input {
+                    padding: 14px 0 14px 16px !important;
+                }
+                .password-toggle-btn {
+                    background: transparent;
+                    border: none;
+                    color: var(--nav-gray);
+                    padding: 0 16px;
+                    cursor: pointer;
+                    transition: color 0.3s ease;
+                }
+                .password-toggle-btn:hover {
+                    color: var(--primary);
+                }
+                .modern-input::placeholder {
+                    color: #94a3b8;
+                    opacity: 0.7;
+                }
                 .rounded-4 { border-radius: 1.25rem !important; }
                 .text-success { color: #10b981 !important; }
                 .bg-success { background-color: #10b981 !important; }

@@ -1,0 +1,29 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-cyber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="300" fill="#FEF2F2"/>
+  
+  <!-- Shield Structure -->
+  <path d="M200 50C160 50 110 70 110 120C110 200 200 260 200 260C200 260 290 200 290 120C290 70 240 50 200 50Z" fill="url(#grad-cyber)" opacity="0.1" stroke="#EF4444" stroke-width="4"/>
+  <path d="M200 70L270 120V150C270 200 200 240 200 240L130 150V120L200 70Z" fill="white" fill-opacity="0.5"/>
+  
+  <!-- Holographic Grid -->
+  <path d="M140 120L260 120" stroke="#EF4444" stroke-width="1" opacity="0.2"/>
+  <path d="M140 150L260 150" stroke="#EF4444" stroke-width="1" opacity="0.2"/>
+  <path d="M140 180L260 180" stroke="#EF4444" stroke-width="1" opacity="0.2"/>
+  
+  <!-- Lock -->
+  <rect x="175" y="140" width="50" height="40" rx="4" fill="#EF4444"/>
+  <path d="M185 140V120C185 111.716 191.716 105 200 105C208.284 105 215 111.716 215 120V140" stroke="#EF4444" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="200" cy="160" r="4" fill="white"/>
+  
+  <!-- Scan Line -->
+  <rect x="110" y="80" width="180" height="2" fill="#EF4444" opacity="0.5">
+    <animate attributeName="y" values="80;230;80" dur="3s" repeatCount="indefinite" />
+  </rect>
+</svg>

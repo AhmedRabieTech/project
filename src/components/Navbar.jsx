@@ -33,11 +33,14 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
+        const root = document.documentElement;
         if (isDarkMode) {
             document.body.classList.add('dark-mode');
+            root.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
         } else {
             document.body.classList.remove('dark-mode');
+            root.classList.remove('dark-mode');
             localStorage.setItem('theme', 'light');
         }
     }, [isDarkMode]);
@@ -100,7 +103,7 @@ const Navbar = () => {
                             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
-                    <span className="logo-text">Career<span>Guidance</span></span>
+                    <span className="logo-text">graduate<span>_career</span></span>
                 </Link>
 
                 {/* Mobile Burger Menu */}
@@ -140,7 +143,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link to="/support" onClick={() => setIsMobileMenuOpen(false)}>
-                                <i className="bi bi-headset"></i> <span>{t('nav.support')}</span>
+                                <i className="bi bi-mortarboard"></i> <span>{isRtl ? 'مصادر التعلم' : 'Learning Resources'}</span>
                             </Link>
                         </li>
                     </ul>

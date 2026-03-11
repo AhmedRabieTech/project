@@ -9,7 +9,7 @@ import ViewCareerPaths from './pages/ViewCareerPaths';
 import UserRecommendation from './pages/UserRecommendation';
 import Articles from './pages/Articles';
 import ArticlePage from './pages/ArticlePage';
-import Support from './pages/Support';
+import LearningResources from './pages/LearningResources';
 import ProtectedRoute from './components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -50,7 +50,7 @@ const App = () => {
                             />
                             <Route
                                 path="/support"
-                                element={<Support />}
+                                element={<LearningResources />}
                             />
                             <Route
                                 path="/add-career"

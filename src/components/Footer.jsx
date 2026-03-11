@@ -24,7 +24,7 @@ const Footer = () => {
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                                 </svg>
                             </div>
-                            <span className="logo-text-footer">Career<span>Guidance</span></span>
+                            <span className="logo-text-footer">graduate<span>_career</span></span>
                         </Link>
                         <p className="footer-description">
                             {t('footer.tagline') || (isRtl ? 'نحن نساعدك على اكتشاف شغفك ورسم مسارك المهني بأفضل الطرق الحديثة والموثوقة.' : 'We help you discover your passion and design your career path with modern and reliable approaches.')}
@@ -89,7 +89,7 @@ const Footer = () => {
 
                 <div className="footer-bottom">
                     <div className="copyright">
-                        &copy; {new Date().getFullYear()} <strong>CareerGuidance</strong>. {isRtl ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
+                        &copy; {new Date().getFullYear()} <strong>graduate_career</strong>. {isRtl ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
                     </div>
                     <div className="footer-bottom-links">
                         <Link to="#">{t('footer.privacy') || (isRtl ? 'سياسة الخصوصية' : 'Privacy Policy')}</Link>
