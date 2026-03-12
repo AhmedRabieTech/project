@@ -1,0 +1,45 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-frontend" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    <filter id="shadow-fe" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="400" height="300" fill="#F0F9FF"/>
+  
+  <!-- Browser Window -->
+  <g filter="url(#shadow-fe)">
+    <rect x="60" y="50" width="280" height="200" rx="12" fill="white"/>
+    <rect x="60" y="50" width="280" height="25" rx="12" fill="#E2E8F0"/>
+    <circle cx="80" cy="62.5" r="4" fill="#EF4444"/>
+    <circle cx="95" cy="62.5" r="4" fill="#F59E0B"/>
+    <circle cx="110" cy="62.5" r="4" fill="#10B981"/>
+  </g>
+
+  <!-- Laptop Body Simulation -->
+  <rect x="40" y="240" width="320" height="15" rx="4" fill="#CBD5E1"/>
+  <rect x="160" y="240" width="80" height="8" rx="2" fill="#94A3B8"/>
+
+  <!-- Elements -->
+  <rect x="80" y="90" width="100" height="8" rx="4" fill="#3B82F6" opacity="0.6"/>
+  <rect x="80" y="110" width="70" height="8" rx="4" fill="#94A3B8" opacity="0.3"/>
+  <rect x="80" y="130" width="240" height="60" rx="8" fill="#F1F5F9"/>
+  <rect x="95" y="145" width="40" height="30" rx="4" fill="#3B82F6" opacity="0.2"/>
+  <rect x="145" y="150" width="80" height="6" rx="3" fill="#3B82F6" opacity="0.4"/>
+  <rect x="145" y="165" width="160" height="6" rx="3" fill="#94A3B8" opacity="0.2"/>
+  
+  <circle cx="300" cy="100" r="20" fill="url(#grad-frontend)" opacity="0.1"/>
+  <path d="M290 100L297 107L310 93" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

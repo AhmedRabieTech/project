@@ -1,0 +1,38 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-backend" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="300" fill="#ECFDF5"/>
+  
+  <!-- Servers -->
+  <rect x="130" y="50" width="140" height="40" rx="6" fill="#1F2937"/>
+  <rect x="130" y="100" width="140" height="40" rx="6" fill="#1F2937"/>
+  <rect x="130" y="150" width="140" height="40" rx="6" fill="#1F2937"/>
+  
+  <circle cx="150" cy="70" r="3" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="150" cy="120" r="3" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="150" cy="170" r="3" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+  </circle>
+  
+  <rect x="170" y="65" width="80" height="4" rx="2" fill="white" opacity="0.1"/>
+  <rect x="170" y="115" width="80" height="4" rx="2" fill="white" opacity="0.1"/>
+  <rect x="170" y="165" width="80" height="4" rx="2" fill="white" opacity="0.1"/>
+
+  <!-- Database Icon -->
+  <path d="M200 210C240 210 270 220 270 230V260C270 270 240 280 200 280C160 280 130 270 130 260V230C130 220 160 210 200 210Z" fill="url(#grad-backend)" opacity="0.1" stroke="#10B981" stroke-width="2"/>
+  <ellipse cx="200" cy="230" rx="70" ry="20" fill="#10B981" opacity="0.2"/>
+  <path d="M130 230C130 240 160 250 200 250C240 250 270 240 270 230" stroke="#10B981" stroke-width="2"/>
+
+  <!-- Connections -->
+  <path d="M130 120H100V240H130" stroke="#10B981" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M270 120H300V240H270" stroke="#10B981" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
