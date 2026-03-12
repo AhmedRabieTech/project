@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -26,7 +26,7 @@ const App = () => {
 
     return (
         <ErrorBoundary>
-            <Router basename="/project">
+            <Router>
                 <div className="app-container">
                     <Navbar />
                     <div style={{ minHeight: '600px' }}>
