@@ -26,7 +26,7 @@ const App = () => {
 
     return (
         <ErrorBoundary>
-            <Router>
+            <Router basename="/project">
                 <div className="app-container">
                     <Navbar />
                     <div style={{ minHeight: '600px' }}>
