@@ -35,7 +35,7 @@ const Home = () => {
                             <p className="fs-5 mb-5 w-100 mx-auto" style={{ maxWidth: '600px' }}>{t('hero.description')}</p>
 
                             <div className="search-container mt-2 w-100 mx-auto" style={{ maxWidth: '700px' }}>
-                                <div className="search-wrapper d-flex align-items-center bg-white rounded-pill shadow-xl p-2 border border-2 border-primary" style={{ height: '70px' }}>
+                                <div className="search-wrapper d-flex align-items-center bg-white rounded-pill shadow-xl p-2 border border-2 border-primary">
                                     <div className={isRtl ? 'pe-4' : 'ps-4'}>
                                         <i className="fas fa-search text-primary fs-4"></i>
                                     </div>
@@ -180,7 +180,7 @@ const Home = () => {
                     </div>
                     <div className="tab-class text-center">
                         <div className="d-flex justify-content-center mb-5 overflow-auto pb-3">
-                            <ul className="nav nav-pills d-inline-flex text-center bg-white shadow-sm p-2 rounded-pill flex-nowrap">
+                            <ul className="nav nav-pills d-inline-flex text-center bg-white shadow-sm p-2 rounded-pill flex-wrap flex-md-nowrap justify-content-center">
                                 <li className="nav-item">
                                     <a className="nav-link rounded-pill active px-4 fw-bold" data-bs-toggle="pill" href="#tab-1">{t('industries.tabs.all')}</a>
                                 </li>

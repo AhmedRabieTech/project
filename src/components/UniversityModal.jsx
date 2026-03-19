@@ -12,31 +12,31 @@ const UniversityModal = ({ isOpen, onClose }) => {
             name: "Massachusetts Institute of Technology",
             arabicName: "معهد ماساتشوستس للتكنولوجيا",
             url: "https://web.mit.edu",
-            image: "/images/mit.png"
+            image: `${import.meta.env.BASE_URL}images/mit.png`
         },
         {
             name: "Stanford University",
             arabicName: "جامعة ستانفورد",
             url: "https://stanford.edu",
-            image: "/images/stanford.png"
+            image: `${import.meta.env.BASE_URL}images/stanford.png`
         },
         {
             name: "Harvard University",
             arabicName: "جامعة هارفارد",
             url: "https://harvard.edu",
-            image: "/images/harvard.png"
+            image: `${import.meta.env.BASE_URL}images/harvard.png`
         },
         {
             name: "Carnegie Mellon University",
             arabicName: "جامعة كارنيجي ميلون",
             url: "https://cmu.edu",
-            image: "/images/cmu.png"
+            image: `${import.meta.env.BASE_URL}images/cmu.png`
         },
         {
             name: "University of Oxford",
             arabicName: "جامعة أكسفورد",
             url: "https://ox.ac.uk",
-            image: "/images/oxford.png"
+            image: `${import.meta.env.BASE_URL}images/oxford.png`
         }
     ];
 

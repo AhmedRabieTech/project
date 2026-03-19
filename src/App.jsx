@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -20,6 +20,7 @@ const App = () => {
         const currentLang = i18n.language || 'en';
         const dir = (currentLang && (currentLang.startsWith('ar') || currentLang.startsWith('he'))) ? 'rtl' : 'ltr';
         document.body.dir = dir;
+        document.documentElement.dir = dir;
         document.documentElement.dir = dir;
         document.documentElement.lang = currentLang;
     }, [i18n.language]);

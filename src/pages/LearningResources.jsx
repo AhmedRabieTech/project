@@ -7,7 +7,7 @@ const categories = [
     {
         id: 'frontend',
         icon: 'bi bi-code-slash',
-        image: '/images/frontend.png',
+        image: `${import.meta.env.BASE_URL}images/frontend.png`,
         color: '#0F4CFF',
         description: {
             en: 'Master the art of building beautiful, interactive user interfaces with modern web standards.',
@@ -23,7 +23,7 @@ const categories = [
     {
         id: 'backend',
         icon: 'bi bi-database',
-        image: '/images/backend.png',
+        image: `${import.meta.env.BASE_URL}images/backend.png`,
         color: '#10B981',
         description: {
             en: 'Deep dive into server-side logic, databases, and APIs to power scalable applications.',
@@ -39,7 +39,7 @@ const categories = [
     {
         id: 'ai',
         icon: 'bi bi-cpu',
-        image: '/images/ai.png',
+        image: `${import.meta.env.BASE_URL}images/ai.png`,
         color: '#8B5CF6',
         description: {
             en: 'Explore the future of intelligence through machine learning, neural networks, and data science.',
@@ -55,7 +55,7 @@ const categories = [
     {
         id: 'cybersecurity',
         icon: 'bi bi-shield-check',
-        image: '/images/cybersecurity.png',
+        image: `${import.meta.env.BASE_URL}images/cybersecurity.png`,
         color: '#EF4444',
         description: {
             en: 'Learn to protect systems, networks, and data from digital attacks and threats.',
