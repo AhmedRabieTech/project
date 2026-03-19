@@ -143,7 +143,7 @@ Error generating stack: `+i.message+`
                 .bg-warning { background-color: #f59e0b !important; }
                 .text-danger { color: #ef4444 !important; }
                 .bg-danger { background-color: #ef4444 !important; }
-            `}})]})},D1=({isOpen:e,onClose:t})=>{var i;const{i18n:n}=rt(),r=(i=n.language)==null?void 0:i.startsWith("ar");if(!e)return null;const s=[{name:"Massachusetts Institute of Technology",arabicName:"معهد ماساتشوستس للتكنولوجيا",url:"https://web.mit.edu",image:"/images/mit.png"},{name:"Stanford University",arabicName:"جامعة ستانفورد",url:"https://stanford.edu",image:"/images/stanford.png"},{name:"Harvard University",arabicName:"جامعة هارفارد",url:"https://harvard.edu",image:"/images/harvard.png"},{name:"Carnegie Mellon University",arabicName:"جامعة كارنيجي ميلون",url:"https://cmu.edu",image:"/images/cmu.png"},{name:"University of Oxford",arabicName:"جامعة أكسفورد",url:"https://ox.ac.uk",image:"/images/oxford.png"}];return l.jsxs("div",{className:"modal-overlay",onClick:t,children:[l.jsxs("div",{className:`uni-modal-container ${r?"rtl":""}`,onClick:a=>a.stopPropagation(),children:[l.jsxs("header",{className:"modal-header-modern",children:[l.jsx("h3",{className:"modal-title-custom",children:r?"أفضل الجامعات التكنولوجية":"Top Tech Universities"}),l.jsx("button",{className:"modal-close-icon",onClick:t,"aria-label":"Close",children:l.jsx("i",{className:"fas fa-times"})})]}),l.jsx("main",{className:"modal-body-scrollable",children:l.jsx("div",{className:"uni-responsive-grid",children:s.map((a,o)=>l.jsxs("a",{href:a.url,target:"_blank",rel:"noopener noreferrer",className:"uni-interactive-card",children:[l.jsx("div",{className:"uni-logo-frame",children:l.jsx("img",{src:a.image,alt:a.name,className:"uni-logo-fixed"})}),l.jsxs("div",{className:"uni-card-details",children:[l.jsx("h5",{className:"uni-card-title",children:r?a.arabicName:a.name}),l.jsxs("div",{className:"uni-cta-wrapper",children:[l.jsx("span",{className:"uni-action-label",children:r?"زيارة الموقع":"Visit Official Site"}),l.jsx("i",{className:`fas fa-external-link-alt ${r?"me-2":"ms-2"}`})]})]})]},o))})}),l.jsx("footer",{className:"modal-footer-fixed",children:l.jsx("button",{className:"btn-confirm-close",onClick:t,children:r?"إغلاق":"Close"})})]}),l.jsx("style",{children:`
+            `}})]})},D1=({isOpen:e,onClose:t})=>{var i;const{i18n:n}=rt(),r=(i=n.language)==null?void 0:i.startsWith("ar");if(!e)return null;const s=[{name:"Massachusetts Institute of Technology",arabicName:"معهد ماساتشوستس للتكنولوجيا",url:"https://web.mit.edu",image:"/project/images/mit.png"},{name:"Stanford University",arabicName:"جامعة ستانفورد",url:"https://stanford.edu",image:"/project/images/stanford.png"},{name:"Harvard University",arabicName:"جامعة هارفارد",url:"https://harvard.edu",image:"/project/images/harvard.png"},{name:"Carnegie Mellon University",arabicName:"جامعة كارنيجي ميلون",url:"https://cmu.edu",image:"/project/images/cmu.png"},{name:"University of Oxford",arabicName:"جامعة أكسفورد",url:"https://ox.ac.uk",image:"/project/images/oxford.png"}];return l.jsxs("div",{className:"modal-overlay",onClick:t,children:[l.jsxs("div",{className:`uni-modal-container ${r?"rtl":""}`,onClick:a=>a.stopPropagation(),children:[l.jsxs("header",{className:"modal-header-modern",children:[l.jsx("h3",{className:"modal-title-custom",children:r?"أفضل الجامعات التكنولوجية":"Top Tech Universities"}),l.jsx("button",{className:"modal-close-icon",onClick:t,"aria-label":"Close",children:l.jsx("i",{className:"fas fa-times"})})]}),l.jsx("main",{className:"modal-body-scrollable",children:l.jsx("div",{className:"uni-responsive-grid",children:s.map((a,o)=>l.jsxs("a",{href:a.url,target:"_blank",rel:"noopener noreferrer",className:"uni-interactive-card",children:[l.jsx("div",{className:"uni-logo-frame",children:l.jsx("img",{src:a.image,alt:a.name,className:"uni-logo-fixed"})}),l.jsxs("div",{className:"uni-card-details",children:[l.jsx("h5",{className:"uni-card-title",children:r?a.arabicName:a.name}),l.jsxs("div",{className:"uni-cta-wrapper",children:[l.jsx("span",{className:"uni-action-label",children:r?"زيارة الموقع":"Visit Official Site"}),l.jsx("i",{className:`fas fa-external-link-alt ${r?"me-2":"ms-2"}`})]})]})]},o))})}),l.jsx("footer",{className:"modal-footer-fixed",children:l.jsx("button",{className:"btn-confirm-close",onClick:t,children:r?"إغلاق":"Close"})})]}),l.jsx("style",{children:`
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
 
                 .modal-overlay {
@@ -339,6 +339,11 @@ Error generating stack: `+i.message+`
                     --nav-border-color: var(--border-color);
                 }
 
+                /* Ensure element width calculations include padding and border to prevent overflowing buttons on small screens */
+                .modern-navbar, .modern-navbar *, .modern-navbar *::before, .modern-navbar *::after {
+                    box-sizing: border-box;
+                }
+
                 body {
                     padding-top: calc(var(--nav-height) + var(--top-bar-height));
                 }
@@ -410,6 +415,7 @@ Error generating stack: `+i.message+`
                     text-decoration: none;
                     z-index: 1060;
                     flex-shrink: 0;
+                    max-width: calc(100% - 60px); /* Leave safe space for burger menu */
                 }
 
                 .logo-icon {
@@ -421,6 +427,7 @@ Error generating stack: `+i.message+`
                     align-items: center;
                     justify-content: center;
                     color: white;
+                    flex-shrink: 0; /* Keep icon shape */
                 }
 
                 .logo-text {
@@ -428,6 +435,9 @@ Error generating stack: `+i.message+`
                     font-weight: 800;
                     color: var(--nav-text-color);
                     letter-spacing: -0.02em;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis; /* Shrink logo gracefully on small screens */
                 }
 
                 .logo-text span {
@@ -795,6 +805,27 @@ Error generating stack: `+i.message+`
                         text-align: center;
                         padding: 0.8rem;
                         font-size: 1rem;
+                    }
+                }
+
+                /* Explicit fixes for smaller phones */
+                @media (max-width: 480px) {
+                    .navbar-container {
+                        padding: 0 1rem;
+                        gap: 0.5rem;
+                    }
+                    .brand-logo {
+                        gap: 0.5rem;
+                    }
+                    .logo-icon {
+                        width: 32px;
+                        height: 32px;
+                    }
+                    .logo-text {
+                        font-size: 1.25rem;
+                    }
+                    .navbar-menu {
+                        padding: calc(var(--nav-height) + 1rem) 1.5rem 2rem;
                     }
                 }
                 `}})]})},R1=()=>{var r;const{t:e,i18n:t}=rt(),n=(r=t.language)==null?void 0:r.startsWith("ar");return l.jsxs("footer",{className:"modern-footer",dir:n?"rtl":"ltr",children:[l.jsx("div",{className:"footer-top-shape",children:l.jsx("svg",{viewBox:"0 0 1440 48",fill:"none",xmlns:"http://www.w3.org/2000/svg",preserveAspectRatio:"none",children:l.jsx("path",{d:"M0 48H1440V0C1440 0 1140 48 720 48C300 48 0 0 0 0V48Z",fill:"currentColor"})})}),l.jsxs("div",{className:"footer-container",children:[l.jsxs("div",{className:"footer-grid",children:[l.jsxs("div",{className:"footer-section about-section",children:[l.jsxs(he,{to:"/",className:"footer-logo",children:[l.jsx("div",{className:"logo-icon-footer",children:l.jsx("svg",{width:"24",height:"24",viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:"2.5",strokeLinecap:"round",strokeLinejoin:"round",children:l.jsx("path",{d:"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"})})}),l.jsxs("span",{className:"logo-text-footer",children:["graduate",l.jsx("span",{children:" career"})]})]}),l.jsx("p",{className:"footer-description",children:e("footer.tagline")||(n?"نحن نساعدك على اكتشاف شغفك ورسم مسارك المهني بأفضل الطرق الحديثة والموثوقة.":"We help you discover your passion and design your career path with modern and reliable approaches.")}),l.jsxs("div",{className:"social-icons",children:[l.jsx("a",{href:"https://www.facebook.com/share/1BQQ1JbHdY/",target:"_blank",rel:"noopener noreferrer",className:"social-icon","aria-label":"Facebook",children:l.jsx("i",{className:"fab fa-facebook-f"})}),l.jsx("a",{href:"https://twitter.com/careerguidance",target:"_blank",rel:"noopener noreferrer",className:"social-icon","aria-label":"Twitter",children:l.jsx("i",{className:"fab fa-twitter"})}),l.jsx("a",{href:"https://www.instagram.com/rby296938?igsh=cnZlbHRtbGcycXEx",target:"_blank",rel:"noopener noreferrer",className:"social-icon","aria-label":"Instagram",children:l.jsx("i",{className:"fab fa-instagram"})}),l.jsx("a",{href:"https://linkedin.com/company/careerguidance",target:"_blank",rel:"noopener noreferrer",className:"social-icon","aria-label":"LinkedIn",children:l.jsx("i",{className:"fab fa-linkedin-in"})}),l.jsx("a",{href:"https://youtube.com/c/careerguidance",target:"_blank",rel:"noopener noreferrer",className:"social-icon","aria-label":"YouTube",children:l.jsx("i",{className:"fab fa-youtube"})})]})]}),l.jsxs("div",{className:"footer-section links-section",children:[l.jsx("h4",{className:"footer-title",children:e("footer.links_title")||(n?"روابط سريعة":"Quick Links")}),l.jsxs("ul",{className:"footer-links",children:[l.jsx("li",{children:l.jsx(he,{to:"/",children:e("nav.home")||(n?"الرئيسية":"Home")})}),l.jsx("li",{children:l.jsx(he,{to:"/career-paths",children:e("nav.services")||(n?"الخدمات":"Services")})}),l.jsx("li",{children:l.jsx(he,{to:"/recommendation",children:e("nav.guidance")||(n?"التوجيه المهني":"Career Guidance")})}),l.jsx("li",{children:l.jsx(he,{to:"/articles",children:e("nav.articles")||(n?"مقالات":"Articles")})}),l.jsx("li",{children:l.jsx(he,{to:"/support",children:e("nav.support")||(n?"الدعم الفني":"Support")})})]})]}),l.jsxs("div",{className:"footer-section contact-section",children:[l.jsx("h4",{className:"footer-title",children:e("footer.contact_title")||(n?"معلومات التواصل":"Contact Us")}),l.jsxs("ul",{className:"contact-info",children:[l.jsxs("li",{children:[l.jsx("div",{className:"contact-icon",children:l.jsx("i",{className:"fas fa-map-marker-alt"})}),l.jsx("span",{className:"contact-link no-hover",style:{cursor:"default"},children:n?"شارع التسعين، التجمع الخامس، القاهرة، مصر":"90th Street, New Cairo, Cairo, Egypt"})]}),l.jsxs("li",{children:[l.jsx("div",{className:"contact-icon",children:l.jsx("i",{className:"fas fa-phone-alt"})}),l.jsx("span",{dir:"ltr",className:"contact-link no-hover",style:{cursor:"default"},children:"+20 100 123 4567"})]}),l.jsxs("li",{children:[l.jsx("div",{className:"contact-icon",children:l.jsx("i",{className:"fas fa-envelope"})}),l.jsx("a",{href:"mailto:support@careerguidance.com",className:"contact-link",children:"support@careerguidance.com"})]})]})]}),l.jsxs("div",{className:"footer-section newsletter-section",children:[l.jsx("h4",{className:"footer-title",children:n?"النشرة البريدية":"Newsletter"}),l.jsx("p",{className:"newsletter-text",children:n?"اشترك للحصول على أحدث المقالات والنصائح المهنية":"Subscribe to receive the latest articles and career tips"}),l.jsxs("form",{className:"newsletter-form",onSubmit:s=>s.preventDefault(),children:[l.jsx("input",{type:"email",placeholder:e("footer.placeholder")||(n?"البريد الإلكتروني":"Email address"),required:!0}),l.jsx("button",{type:"submit",children:l.jsx("i",{className:`fas fa-paper-plane ${n?"fa-flip-horizontal":""}`})})]})]})]}),l.jsxs("div",{className:"footer-bottom",children:[l.jsxs("div",{className:"copyright",children:["© ",new Date().getFullYear()," ",l.jsx("strong",{children:"graduate career"}),". ",n?"جميع الحقوق محفوظة.":"All rights reserved."]}),l.jsxs("div",{className:"footer-bottom-links",children:[l.jsx(he,{to:"#",children:e("footer.privacy")||(n?"سياسة الخصوصية":"Privacy Policy")}),l.jsx(he,{to:"#",children:e("footer.terms")||(n?"الشروط والأحكام":"Terms of Service")})]})]})]}),l.jsx("style",{dangerouslySetInnerHTML:{__html:`
