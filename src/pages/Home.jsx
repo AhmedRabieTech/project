@@ -51,7 +51,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-md-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} d-none d-lg-block`}>
+                        <div className={`col-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} mt-5 mt-lg-0`}>
                             <div id="heroCarousel" className="carousel slide shadow-2xl rounded-4 overflow-hidden border border-primary border-4" data-bs-ride="carousel" data-bs-interval="3000">
                                 <div className="carousel-indicators">
                                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active"></button>
@@ -61,7 +61,7 @@ const Home = () => {
                                 <div className="carousel-inner" role="listbox">
                                     <div className="carousel-item active rounded" data-bs-interval="3000">
                                         <div className="position-relative">
-                                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Career" style={{ height: '550px', objectFit: 'cover' }} />
+                                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary hero-slide-img" alt="Career" />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
                                                 style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
@@ -76,7 +76,7 @@ const Home = () => {
                                     </div>
                                     <div className="carousel-item rounded" data-bs-interval="3000">
                                         <div className="position-relative">
-                                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Success" style={{ height: '550px', objectFit: 'cover' }} />
+                                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary hero-slide-img" alt="Success" />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
                                                 style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-success rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
@@ -91,7 +91,7 @@ const Home = () => {
                                     </div>
                                     <div className="carousel-item rounded" data-bs-interval="3000">
                                         <div className="position-relative">
-                                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary" alt="Consultation" style={{ height: '550px', objectFit: 'cover' }} />
+                                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" className="img-fluid w-100 bg-secondary hero-slide-img" alt="Consultation" />
                                             <div className={`position-absolute bottom-0 start-0 w-100 p-4 p-md-5 text-white d-flex align-items-center gap-4 transition-all ${isRtl ? 'flex-row-reverse text-end' : 'text-start'}`}
                                                 style={{ background: 'var(--glass-bg)', backdropFilter: 'blur(6px)' }}>
                                                 <div className="bg-info rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 shadow-lg" style={{ width: '55px', height: '55px', opacity: 0.9 }}>
