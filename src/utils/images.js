@@ -25,12 +25,8 @@ export const DEFAULT_CAREER_IMAGE = 'https://images.unsplash.com/photo-150767979
 
 export const getCareerImage = (key, title = '') => {
     // If key is a full URL, return it
-    if (key && (key.startsWith('http') || key.startsWith('data:'))) {
+    if (key && (key.startsWith('http') || key.startsWith('data:') || key.startsWith('/'))) {
         return key;
-    }
-    if (key && key.startsWith('/')) {
-        const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-        return `${base}${key}`;
     }
 
     const searchStr = `${key || ''} ${title || ''}`.toLowerCase().trim().replace(/\s+/g, '_');

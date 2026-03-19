@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { getCareerImage } from '../utils/images';
 
 const categories = [
     {
@@ -111,7 +110,7 @@ const ResourceCard = ({ cat, idx, lang, isRtl }) => {
                             z: 50
                         }}
                     >
-                        <img src={getCareerImage(cat.image)} alt={cat.id} className="card-image-png" />
+                        <img src={cat.image} alt={cat.id} className="card-image-png" />
                     </motion.div>
                     <div className="image-overlay-glow"></div>
                     <div className="card-inner-shadow"></div>

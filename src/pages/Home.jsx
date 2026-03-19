@@ -51,7 +51,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={`col-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} mt-5 mt-lg-0`}>
+                        <div className={`col-md-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} d-none d-lg-block`}>
                             <div id="heroCarousel" className="carousel slide shadow-2xl rounded-4 overflow-hidden border border-primary border-4" data-bs-ride="carousel" data-bs-interval="3000">
                                 <div className="carousel-indicators">
                                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" className="active"></button>
