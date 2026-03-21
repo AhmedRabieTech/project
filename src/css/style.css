@@ -37,12 +37,12 @@ body {
 .ps-lg-5 { padding-inline-start: 3rem !important; }
 .pe-lg-5 { padding-inline-end: 3rem !important; }
 
-/* Remove legacy manual flips that break LTR */
+/* Logical spacing handles dir naturally */
 [dir="rtl"] .navbar,
 [dir="rtl"] .navbar-nav,
 [dir="rtl"] .row,
 [dir="rtl"] .search-wrapper {
-    /* flex-direction is handled by dir attribute naturally for standard flex items */
+    display: flex;
 }
 
 /* Custom Modern Scrollbar */
@@ -139,6 +139,13 @@ body {
     align-items: center;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .display-3 {
+        font-size: calc(1.5rem + 3.3vw);
+    }
 }
 
 .hero-slide-img {
@@ -163,6 +170,31 @@ body {
 @media (max-width: 576px) {
     .hero-slide-img {
         aspect-ratio: 4 / 3;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .nav-pills {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        gap: 8px;
+    }
+    .nav-pills .nav-link {
+        border: 1px solid rgba(37, 99, 235, 0.1);
+        background: white;
+        margin-bottom: 4px;
+        font-size: 13px;
     }
 }
 

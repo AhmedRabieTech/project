@@ -211,13 +211,51 @@ const Navbar = () => {
                     </ul>
                     
                     {/* Quick actions for mobile only (shown inside the menu drawer) */}
-                    <div className="quick-actions mobile-only-flex">
-                        <button className="minimal-action-btn" onClick={toggleLanguage} title={isRtl ? 'English' : 'عربي'}>
-                            <span>{isRtl ? 'EN' : 'عربي'}</span>
-                        </button>
-                        <button className="minimal-action-btn" onClick={toggleTheme} title={isRtl ? 'تغيير المظهر' : 'Toggle Theme'}>
-                            <span>{isDarkMode ? (isRtl ? 'النهار' : 'Light') : (isRtl ? 'الليل' : 'Dark')}</span>
-                        </button>
+                    <div className="mobile-only-section">
+                        <div className="quick-actions mobile-only-flex">
+                            <button className="minimal-action-btn" onClick={toggleLanguage} title={isRtl ? 'English' : 'عربي'}>
+                                <i className="fas fa-globe me-2"></i>
+                                <span>{isRtl ? 'EN' : 'English'}</span>
+                            </button>
+                            <button className="minimal-action-btn" onClick={toggleTheme} title={isRtl ? 'تغيير المظهر' : 'Toggle Theme'}>
+                                <i className={`fas ${isDarkMode ? 'fa-sun' : 'fa-moon'} me-2`}></i>
+                                <span>{isDarkMode ? (isRtl ? 'النهار' : 'Light') : (isRtl ? 'الليل' : 'Dark')}</span>
+                            </button>
+                        </div>
+
+                        <div className="drawer-auth-buttons mt-3 pt-3 border-top">
+                            {user ? (
+                                <div className="d-flex flex-column gap-2">
+                                    <div className="user-drawer-info px-2 mb-2 d-flex align-items-center gap-3">
+                                        <div className="avatar-circle">{user.name?.charAt(0) || 'U'}</div>
+                                        <div>
+                                            <div className="fw-bold">{user.name}</div>
+                                            <div className="small opacity-75">{user.email}</div>
+                                        </div>
+                                    </div>
+                                    <Link to="/profile" className="drawer-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                                        <i className="fas fa-user-circle me-3"></i>{isRtl ? 'الملف الشخصي' : 'Profile'}
+                                    </Link>
+                                    {isAdmin && (
+                                        <Link to="/add-career" className="drawer-btn" onClick={() => setIsMobileMenuOpen(false)}>
+                                            <i className="fas fa-plus-circle me-3"></i>{t('nav.admin')}
+                                        </Link>
+                                    )}
+                                    <button onClick={handleLogout} className="drawer-btn text-danger border-0 bg-transparent text-start w-100">
+                                        <i className="fas fa-sign-out-alt me-3"></i>{t('nav.logout')}
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="d-flex gap-2">
+                                    <button onClick={openLogin} className="drawer-auth-btn flex-grow-1">
+                                        <i className="fas fa-sign-in-alt me-2"></i>{t('nav.login')}
+                                    </button>
+                                    <button onClick={openRegister} className="drawer-auth-btn btn-primary-blue-bg text-white flex-grow-1">
+                                        <i className="fas fa-user-plus me-2"></i>{t('nav.signup')}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </nav>
 
@@ -232,7 +270,7 @@ const Navbar = () => {
                         </button>
                     </div>
 
-                    <div className="auth-buttons">
+                    <div className="auth-buttons desktop-only-flex">
                         {user ? (
                             <div className="user-dropdown-wrapper" ref={userRef}>
                                 <button className="user-avatar-btn" onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}>

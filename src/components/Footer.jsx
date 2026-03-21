@@ -367,7 +367,7 @@ const Footer = () => {
                     }
                 }
 
-                @media (max-width: 640px) {
+                @media (max-width: 768px) {
                     .footer-grid {
                         grid-template-columns: 1fr;
                     }
