@@ -146,77 +146,51 @@ const ViewCareerPaths = () => {
                         </div>
                     ) : filteredPaths.length > 0 ? (
                         filteredPaths.map((path) => (
-                            <div key={path.id} className="col-lg-4 col-md-6">
-                                <div className="card h-100 border-0 shadow-lg rounded-4 overflow-hidden career-card transition-all hover-translate">
+                            <div key={path.id} className="col-lg-4 col-md-6 mb-4">
+                                <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden fruite-item career-card-main transition-all">
                                     <div className="position-relative overflow-hidden">
                                         <img
-                                            src={path.image || getCareerImage(path.id, path.title)}
-                                            className="img-fluid w-100 career-img"
-                                            style={{ height: '240px', objectFit: 'cover' }}
-                                            alt={t(`industries.roles.${path.id}`, path.title)}
+                                            src={getCareerImage(path.id)}
+                                            className="img-fluid w-100"
+                                            style={{ height: '230px', objectFit: 'cover' }}
+                                            alt={path.title}
                                             onError={handleImageError}
                                         />
-                                        <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)' }}></div>
-                                        <div className="position-absolute bottom-0 start-0 w-100 p-4 text-white">
-                                            <span className="badge bg-primary mb-2 px-3 py-2 rounded-pill shadow-lg" style={{ fontSize: '0.8rem' }}>
-                                                {t(`industries.tabs.${path.id}`, path.industry)}
-                                            </span>
-                                            <div className="d-flex align-items-center gap-2 mb-1">
-                                                <h4 className="text-white mb-0 fw-bold">{t(`industries.roles.${path.id}`, path.title)}</h4>
-                                                <span className="badge bg-white text-primary rounded-pill small" style={{ fontSize: '0.65rem' }}>{path.level}</span>
-                                            </div>
+                                        <div className="bg-primary text-white px-3 py-1 rounded-pill position-absolute" style={{ top: '15px', [isRtl ? 'left' : 'right']: '15px' }}>
+                                            {path.industry}
                                         </div>
                                     </div>
-                                    <div className="card-body p-4">
-                                        <p className="text-muted mb-4" style={{ height: '72px', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
-                                            {t(`industries.roles.${path.id}_desc`, path.description)}
+                                    <div className="card-body p-4 d-flex flex-column text-start">
+                                        <h4 className="fw-bold mb-3">{t(`industries.roles.${path.id}`, path.title)}</h4>
+                                        {/* Description matches Home page's roles_desc style */}
+                                        <p className="text-muted small mb-4 flex-grow-1" style={{ display: '-webkit-box', WebkitLineClamp: '3', WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                                            {path.description}
                                         </p>
-                                        <div className="mb-4">
-                                            <h6 className="fw-bold mb-3 d-flex align-items-center">
-                                                <i className={`fas fa-bolt text-warning ${isRtl ? 'ms-2' : 'me-2'}`}></i>
-                                                {t('browse.key_skills')}
-                                            </h6>
-                                            <div className={`d-flex flex-wrap gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
-                                                {(path.skills || []).slice(0, 4).map((skill, index) => (
-                                                    <span key={index} className="badge bg-light text-primary border border-primary-subtle rounded-pill px-3 py-2" style={{ fontSize: '0.75rem' }}>
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                                {(path.skills || []).length > 4 && (
-                                                    <span className="badge bg-light text-muted border rounded-pill px-3 py-2" style={{ fontSize: '0.75rem' }}>
-                                                        +{(path.skills || []).length - 4}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card-footer bg-transparent border-0 p-4 pt-0">
-                                        <div className={`d-flex justify-content-between align-items-center ${isRtl ? 'flex-row-reverse' : ''}`}>
-                                            <button
-                                                onClick={() => handleShowDetails(path)}
-                                                className="btn btn-outline-primary rounded-pill px-4 fw-bold hover-fill"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#careerDetailsModal"
-                                            >
-                                                {t('browse.details')}
-                                            </button>
-                                            <div className="d-flex gap-2">
-                                                <Link to="/recommendation" className="btn btn-light rounded-circle shadow-sm" title={t('nav.recommendation')}>
-                                                    <i className={`${getFieldIcon(path.industry || path.id || path.category)} text-primary`}></i>
-                                                </Link>
+                                        <div className="d-flex justify-content-between align-items-center mt-auto">
+                                            {(() => {
+                                                const id = path.id;
+                                                const statusKey = ['fullstack', 'frontend', 'backend', 'ml_engineer', 'data_scientist'].includes(id) ? 'high_growth' : 
+                                                                ['analyst', 'android', 'uiux', 'devops', 'seo'].includes(id) ? 'in_demand' : 'diverse';
+                                                const statusClass = statusKey === 'high_growth' ? 'bg-primary-soft text-primary' : 
+                                                                  statusKey === 'in_demand' ? 'bg-info-soft text-info' : 'bg-warning-soft text-warning';
+                                                
+                                                return <span className={`badge ${statusClass} px-3 py-2 rounded-pill fw-bold`}>{t(`industries.categories.${statusKey}`)}</span>;
+                                            })()}
+                                            <div className="d-flex align-items-center gap-2">
+                                                <button
+                                                    onClick={() => handleShowDetails(path)}
+                                                    className="btn btn-outline-primary rounded-pill px-3 fw-bold"
+                                                >
+                                                    {t('industries.actions.details')}
+                                                </button>
                                                 {isAdmin && (
-                                                    <>
-                                                        <button className="btn btn-light rounded-circle shadow-sm text-warning" title="Edit">
-                                                            <i className="fas fa-edit"></i>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => handleDelete(path.id)}
-                                                            className="btn btn-light rounded-circle shadow-sm text-danger"
-                                                            title="Delete"
-                                                        >
-                                                            <i className="fas fa-trash"></i>
-                                                        </button>
-                                                    </>
+                                                    <button
+                                                        className="btn btn-outline-danger btn-sm rounded-circle d-flex align-items-center justify-content-center"
+                                                        style={{ width: '32px', height: '32px' }}
+                                                        onClick={() => handleDelete(path.id)}
+                                                    >
+                                                        <i className="fas fa-trash-alt"></i>
+                                                    </button>
                                                 )}
                                             </div>
                                         </div>
@@ -227,112 +201,241 @@ const ViewCareerPaths = () => {
                     ) : (
                         <div className="col-12 text-center py-5">
                             <div className="mb-4">
-                                <div className="bg-light rounded-circle d-inline-flex align-items-center justify-content-center shadow-inner" style={{ width: '120px', height: '120px' }}>
-                                    <i className="fas fa-search-minus fa-4x text-muted opacity-50"></i>
-                                </div>
+                                <i className="fas fa-search-minus fa-4x text-muted opacity-25"></i>
                             </div>
-                            <h3 className="fw-bold ">{t('browse.no_results')}</h3>
-                            <p className="text-muted fs-5">{t('browse.no_results_desc')}</p>
-                            <button className="btn btn-primary rounded-pill px-5 py-3 mt-3 fw-bold" onClick={() => { setSearchTerm(''); setSelectedIndustry(''); }}>
-                                <i className="fas fa-sync-alt me-2"></i> Clear All Filters
+                            <h3>{t('browse.no_results')}</h3>
+                            <p className="text-muted">{t('browse.no_results_desc')}</p>
+                            <button
+                                className="btn btn-primary rounded-pill px-4 mt-3"
+                                onClick={() => { setSearchTerm(''); setSelectedIndustry(''); }}
+                            >
+                                {t('browse.clear_filters')}
                             </button>
                         </div>
                     )}
                 </div>
             </div>
 
-            {/* Career Details Modal */}
-            <div className="modal fade" id="careerDetailsModal" tabIndex="-1" aria-hidden="true">
-                <div className="modal-dialog modal-lg modal-dialog-centered">
-                    <div className="modal-content border-0 shadow-2xl rounded-4 overflow-hidden">
-                        {selectedCareer && (
-                            <>
-                                <div className="modal-header bg-primary text-white py-4 border-0 position-relative">
-                                    <div className="d-flex align-items-center gap-3">
-                                        <h5 className="modal-title fw-bold fs-3 pe-5 mb-0">
-                                            {t(`industries.roles.${selectedCareer.id}`, selectedCareer.title)}
-                                        </h5>
-                                        <span className="badge bg-white text-primary rounded-pill">{selectedCareer.level}</span>
-                                    </div>
-                                    <button type="button" className={`btn-close btn-close-white position-absolute top-50 translate-middle-y ${isRtl ? 'start-0 ms-4' : 'end-0 me-4'}`} data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body p-0">
+            {/* Career Details Modal - Matched with Home Page Design */}
+            {selectedCareer && (
+                <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(10px)', zIndex: 2000 }}>
+                    <div className="modal-dialog modal-lg modal-dialog-centered">
+                        <div className="modal-content border-0 shadow-2xl rounded-4 overflow-hidden">
+                            <div className="modal-header bg-primary py-4 rounded-top-4 border-0 shadow-sm">
+                                <h5 className="modal-title fw-black fs-2 text-white">
+                                    {t(`industries.roles.${selectedCareer.id}`, selectedCareer.title)}
+                                </h5>
+                                {/* Close X removed as requested */}
+                            </div>
+                            <div className="modal-body p-0">
+                                <div className="career-modal-content">
                                     <div className="position-relative">
                                         <img
-                                            src={selectedCareer.image || getCareerImage(selectedCareer.id, selectedCareer.title)}
+                                            src={getCareerImage(selectedCareer.id)}
                                             className="img-fluid w-100"
-                                            style={{ height: '320px', objectFit: 'cover' }}
+                                            style={{ height: '300px', objectFit: 'cover' }}
                                             alt={selectedCareer.title}
                                             onError={handleImageError}
                                         />
                                         <div className="position-absolute bottom-0 start-0 w-100 p-4 text-white"
-                                            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-                                            <span className="badge bg-primary px-3 py-2 rounded-pill mb-2">{t(`industries.tabs.${selectedCareer.id}`, selectedCareer.industry)}</span>
+                                            style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)' }}>
+                                            <h3 className="fw-black mb-0 text-white shadow-sm">{t(`industries.roles.${selectedCareer.id}`, selectedCareer.title)}</h3>
+                                            <span className="badge bg-primary mt-2 border border-white border-opacity-25 px-3 py-2">{selectedCareer.industry}</span>
                                         </div>
                                     </div>
                                     <div className="p-4 p-md-5">
-                                        <div className="row g-4">
-                                            <div className="col-12 mb-2">
-                                                <h5 className="fw-bold border-bottom pb-3 mb-4">{t('admin_panel.label_desc')}</h5>
-                                                <p className="text-muted fs-5" style={{ lineHeight: '1.8' }}>
-                                                    {t(`industries.roles.${selectedCareer.id}_desc`, selectedCareer.description)}
-                                                </p>
-                                            </div>
+                                        {/* Description */}
+                                        <div className="mb-5">
+                                            <p className="text-secondary fs-5" style={{ lineHeight: '1.7' }}>
+                                                {selectedCareer.description}
+                                            </p>
+                                        </div>
 
-                                            <div className="col-md-6">
-                                                <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-primary shadow-sm">
-                                                    <h6 className="text-primary fw-bold text-uppercase mb-3">
-                                                        <i className={`fas fa-map-signs ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.roadmap')}
-                                                    </h6>
-                                                    <p className="mb-0  small">{t(`industries.roles_details.${selectedCareer.id}.roadmap`, 'Defined professional path from junior to senior levels.')}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-success shadow-sm">
-                                                    <h6 className="text-success fw-bold text-uppercase mb-3">
-                                                        <i className={`fas fa-tools ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.skills')}
-                                                    </h6>
-                                                    <div className="d-flex flex-wrap gap-2">
-                                                        {(selectedCareer.skills || []).map((skill, i) => (
-                                                            <span key={i} className="badge bg-white text-success border border-success-subtle rounded-pill px-2 py-1">{skill}</span>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-warning shadow-sm">
-                                                    <h6 className="text-warning fw-bold text-uppercase mb-3">
-                                                        <i className={`fas fa-money-bill-wave ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.salary')}
-                                                    </h6>
-                                                    <p className="mb-0  fw-bold">{t(`industries.roles_details.${selectedCareer.id}.salary`, 'Competitive Market Salary')}</p>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-info shadow-sm">
-                                                    <h6 className="text-info fw-bold text-uppercase mb-3">
-                                                        <i className={`fas fa-tasks ${isRtl ? 'ms-2' : 'me-2'}`}></i> {t('industries.details_modal.responsibilities')}
-                                                    </h6>
-                                                    <p className="mb-0  small">{t(`industries.roles_details.${selectedCareer.id}.responsibilities`, 'Key operational tasks and strategic objectives.')}</p>
-                                                </div>
-                                            </div>
+                                        <div className="row g-4">
+                                            {(() => {
+                                                const detailKey = selectedCareer.id === 'fullstack' ? 'software' :
+                                                    selectedCareer.id === 'analyst' ? 'data' :
+                                                        selectedCareer.id === 'marketing_spec' ? 'marketing' :
+                                                            selectedCareer.id;
+
+                                                return (
+                                                    <>
+                                                        <div className="col-md-6">
+                                                            <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-primary">
+                                                                <h6 className="text-primary fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
+                                                                    <i className="fas fa-route me-2"></i> {t('industries.details_modal.roadmap')}
+                                                                </h6>
+                                                                <p className="mb-0 text-dark small fw-medium" style={{ lineHeight: '1.6' }}>
+                                                                    {t(`industries.roles_details.${detailKey}.roadmap`)}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-success">
+                                                                <h6 className="text-success fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
+                                                                    <i className="fas fa-tools me-2"></i> {t('industries.details_modal.skills')}
+                                                                </h6>
+                                                                <p className="mb-0 text-dark small fw-medium" style={{ lineHeight: '1.6' }}>
+                                                                    {t(`industries.roles_details.${detailKey}.skills`)}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-warning">
+                                                                <h6 className="text-warning fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
+                                                                    <i className="fas fa-money-bill-wave me-2"></i> {t('industries.details_modal.salary')}
+                                                                </h6>
+                                                                <p className="mb-0 text-dark fw-bold" style={{ fontSize: '1.1rem' }}>
+                                                                    {t(`industries.roles_details.${detailKey}.salary`)}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-md-6">
+                                                            <div className="p-4 bg-light rounded-4 h-100 border-start border-4 border-info">
+                                                                <h6 className="text-info fw-bold text-uppercase mb-3" style={{ letterSpacing: '1px' }}>
+                                                                    <i className="fas fa-tasks me-2"></i> {t('industries.details_modal.responsibilities')}
+                                                                </h6>
+                                                                <p className="mb-0 text-dark small fw-medium" style={{ lineHeight: '1.6' }}>
+                                                                    {t(`industries.roles_details.${detailKey}.responsibilities`)}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                );
+                                            })()}
                                         </div>
                                     </div>
+                                    <div className="modal-footer border-0 p-4 pt-0">
+                                        <button type="button" className="btn btn-secondary btn-close-hover rounded-pill px-5 fw-bold transition-all" onClick={() => setSelectedCareer(null)}>
+                                            {t('industries.details_modal.close')}
+                                        </button>
+                                    </div>
                                 </div>
-                                <div className="modal-footer border-0 p-4 pt-0 bg-light">
-                                    <button type="button" className="btn btn-secondary rounded-pill px-5 fw-bold shadow-sm" data-bs-dismiss="modal">{t('industries.details_modal.close')}</button>
-                                    <Link to="/recommendation" className="btn btn-primary rounded-pill px-5 fw-bold shadow-lg hover-scale" data-bs-dismiss="modal">
-                                        {t('hero.search_button')}
-                                    </Link>
-                                </div>
-                            </>
-                        )}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
+
+            <style jsx="true">{`
+                .career-card-main {
+                    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    position: relative;
+                    z-index: 1;
+                    cursor: pointer;
+                }
+                .career-card-main:hover {
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+                    transform: translateY(-8px);
+                    z-index: 5;
+                }
+                .fw-black { font-weight: 900; }
+                .text-slate-dark { color: #1e293b; }
+                .hover-primary:hover { color: #2a52be !important; }
+                .btn-close-hover:hover { 
+                    background-color: #dc3545 !important; 
+                    border-color: #dc3545 !important; 
+                    color: white !important;
+                    transform: scale(1.05);
+                }
+                .tracking-widest { letter-spacing: 0.1em; }
+                .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+                .shadow-primary-sm { box-shadow: 0 4px 10px rgba(42, 82, 190, 0.2); }
+                .bg-primary-soft { background-color: rgba(42, 82, 190, 0.1); }
+                .bg-info-soft { background-color: rgba(13, 202, 240, 0.1); }
+                .bg-warning-soft { background-color: rgba(255, 193, 7, 0.1); }
+                
+                .detail-card {
+                    border-radius: 24px;
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    border: 1px solid transparent;
+                }
+
+                .premium-card-blue { background: linear-gradient(135deg, rgba(42, 82, 190, 0.05), rgba(42, 82, 190, 0.12)); border-color: rgba(42, 82, 190, 0.1); }
+                .premium-card-purple { background: linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(147, 51, 234, 0.12)); border-color: rgba(147, 51, 234, 0.1); }
+                .premium-card-teal { background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(20, 184, 166, 0.12)); border-color: rgba(20, 184, 166, 0.1); }
+
+                .icon-wrapper-blue { width: 45px; height: 45px; background: #2a52be; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(42, 82, 190, 0.2); }
+                .icon-wrapper-purple { width: 45px; height: 45px; background: #9333ea; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(147, 51, 234, 0.2); }
+                .icon-wrapper-teal { width: 45px; height: 45px; background: #14b8a6; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(20, 184, 166, 0.2); }
+
+                .text-dark-blue { color: #1e3a8a; }
+                .text-dark-purple { color: #581c87; }
+                .text-dark-teal { color: #0f766e; }
+
+                .detail-card:hover { transform: translateX(10px); background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+                .hover-primary:hover { background: #2a52be !important; color: #fff !important; }
+                .animate__delay-100ms { animation-delay: 0.1s; }
+                .animate__delay-200ms { animation-delay: 0.2s; }
+                
+                @media (max-width: 991px) {
+                    .modal-dialog { margin: 0.5rem; }
+                    .fs-2 { font-size: 1.5rem !important; }
+                }
+                .hover-translate {
+                    transition: all 0.3s ease;
+                }
+                .hover-translate:hover {
+                    transform: translateX(5px);
+                }
+                .premium-input {
+                    border: none;
+                    background: transparent;
+                    width: 100%;
+                    padding: 8px;
+                    outline: none;
+                }
+                .premium-select-inline {
+                    border: none;
+                    background: transparent;
+                    width: 100%;
+                    padding: 8px;
+                    outline: none;
+                    cursor: pointer;
+                }
+                .unified-search-container {
+                    display: flex;
+                    align-items: center;
+                    background: white;
+                    border-radius: 50px;
+                    padding: 8px 15px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                    max-width: 900px;
+                    margin: 0 auto;
+                }
+                .search-input-group {
+                    flex: 2;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 15px;
+                    border-right: 1px solid #eee;
+                }
+                .dropdown-input-group {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 15px;
+                }
+                @media (max-width: 768px) {
+                    .unified-search-container {
+                        flex-direction: column;
+                        border-radius: 20px;
+                    }
+                    .search-input-group {
+                        border-right: none;
+                        border-bottom: 1px solid #eee;
+                        width: 100%;
+                        padding: 10px;
+                    }
+                    .dropdown-input-group {
+                        width: 100%;
+                        padding: 10px;
+                    }
+                }
+            `}</style>
         </div>
     );
 };
 
 export default ViewCareerPaths;
-
-

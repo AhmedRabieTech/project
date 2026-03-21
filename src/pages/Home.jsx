@@ -29,28 +29,6 @@ const Home = () => {
             <div className="container-fluid px-0 hero-header overflow-hidden">
                 <div className="container-fluid px-lg-5">
                     <div className="row g-5 align-items-center">
-                        <div className="col-md-12 col-lg-7 d-flex flex-column align-items-center text-center">
-                            <h4 className="mb-3 text-secondary fw-bold" style={{ letterSpacing: '2px' }}>{t('hero.subtitle')}</h4>
-                            <h1 className="mb-4 display-3 text-primary fw-extra-bold" style={{ lineHeight: '1.2' }}>{t('hero.title')}</h1>
-                            <p className="fs-5 mb-5 w-100 mx-auto" style={{ maxWidth: '600px' }}>{t('hero.description')}</p>
-
-                            <div className="search-container mt-2 w-100 mx-auto" style={{ maxWidth: '700px' }}>
-                                <div className="search-wrapper d-flex align-items-center bg-white rounded-pill shadow-xl p-2 border border-2 border-primary">
-                                    <div className={isRtl ? 'pe-4' : 'ps-4'}>
-                                        <i className="fas fa-search text-primary fs-4"></i>
-                                    </div>
-                                    <input
-                                        type="text"
-                                        className={`form-control border-0 bg-transparent py-3 ${isRtl ? 'text-end' : ''}`}
-                                        placeholder={t('hero.search_placeholder')}
-                                        style={{ fontSize: '1.2rem', boxShadow: 'none' }}
-                                    />
-                                    <button className="btn btn-primary rounded-pill h-100 px-5 fw-bold ms-auto transition-all shadow-lg hover-scale">
-                                        {t('hero.search_button')}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                         <div className={`col-12 col-lg-5 ${isRtl ? 'ps-lg-5' : 'pe-lg-5'} mt-5 mt-lg-0`}>
                             <div id="heroCarousel" className="carousel slide shadow-2xl rounded-4 overflow-hidden border border-primary border-4" data-bs-ride="carousel" data-bs-interval="3000">
                                 <div className="carousel-indicators">
@@ -113,6 +91,28 @@ const Home = () => {
                                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span className="visually-hidden">{t('hero.carousel.next')}</span>
                                 </button>
+                            </div>
+                        </div>
+                        <div className="col-md-12 col-lg-7 d-flex flex-column align-items-center text-center">
+                            <h4 className="mb-3 text-secondary fw-bold" style={{ letterSpacing: '2px' }}>{t('hero.subtitle')}</h4>
+                            <h1 className="mb-4 display-3 text-primary fw-extra-bold" style={{ lineHeight: '1.2' }}>{t('hero.title')}</h1>
+                            <p className="fs-5 mb-5 w-100 mx-auto" style={{ maxWidth: '600px' }}>{t('hero.description')}</p>
+
+                            <div className="search-container mt-2 w-100 mx-auto" style={{ maxWidth: '700px' }}>
+                                <div className="search-wrapper d-flex align-items-center bg-white rounded-pill shadow-xl p-2 border border-2 border-primary">
+                                    <div className={isRtl ? 'pe-4' : 'ps-4'}>
+                                        <i className="fas fa-search text-primary fs-4"></i>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        className={`form-control border-0 bg-transparent py-3 ${isRtl ? 'text-end' : ''}`}
+                                        placeholder={t('hero.search_placeholder')}
+                                        style={{ fontSize: '1.2rem', boxShadow: 'none' }}
+                                    />
+                                    <button className="btn btn-primary rounded-pill h-100 px-5 fw-bold ms-auto transition-all shadow-lg hover-scale">
+                                        {t('hero.search_button')}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

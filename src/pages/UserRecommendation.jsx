@@ -70,96 +70,92 @@ const UserRecommendation = () => {
 
         }, 1500); // 1.5 seconds delay for visual feedback
     };
-
     return (
-        <div className={`recommendation-page bg-light pb-5 ${isRtl ? 'text-end' : 'text-start'}`}>
-            {/* Dynamic Hero Section */}
-            <div className="position-relative overflow-hidden pt-5" style={{ background: 'var(--hero-gradient)', minHeight: '500px' }}>
-                {/* Decorative background circles */}
-                <div className="position-absolute rounded-circle" style={{ width: '400px', height: '400px', background: 'rgba(255,255,255,0.05)', top: '-100px', right: '-100px' }}></div>
-                <div className="position-absolute rounded-circle" style={{ width: '300px', height: '300px', background: 'rgba(0,168,204,0.1)', bottom: '-50px', left: '-50px' }}></div>
-
-                <div className="container position-relative z-index-1 mt-5 pt-5 pb-5">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8 text-center">
-                            <h1 className="display-4 text-white fw-bold mb-4 animate__animated animate__fadeInDown">
-                                <i className="fas fa-compass mb-3 d-block text-secondary" style={{ fontSize: '3rem' }}></i>
+        <div className={`recommendation-page bg-light pb-5 text-start`}> {/* Use text-start, which becomes text-end with dir="rtl" */}
+            {/* Split Professional Hero */}
+            <div className="position-relative bg-white pt-5 pb-5 overflow-hidden border-bottom border-light">
+                <div className="container position-relative z-index-1 mt-5 pt-4 pb-5">
+                    <div className="row align-items-center">
+                        <div className={`col-lg-6 ${isRtl ? 'text-end ps-lg-5' : 'text-start pe-lg-5'}`}>
+                            <span className="badge px-3 py-2 rounded-pill mb-4 fw-bold animate__animated animate__fadeInDown d-inline-block shadow" style={{ background: 'linear-gradient(135deg, #8b5cf6, #d946ef)', color: '#fff', border: '1px solid rgba(255,255,255,0.3)', fontSize: '0.9rem', letterSpacing: '0.5px' }}>
+                                <i className="fas fa-sparkles me-2 text-warning"></i> {isRtl ? 'توصيات مدعومة بالذكاء الاصطناعي' : 'AI-Powered Recommendations'}
+                            </span>
+                            <h1 className="display-4 fw-bold text-dark animate__animated animate__fadeInLeft" style={{ letterSpacing: '-1px', lineHeight: '1.2' }}>
                                 {t('recommend.title')}
                             </h1>
-                            <p className="lead text-white-50 mb-5 animate__animated animate__fadeInUp animate__delay-1s">
+                            <p className="lead text-secondary mt-4 mb-5 animate__animated animate__fadeInLeft animate__delay-1s" style={{ fontSize: '1.2rem', lineHeight: '1.7', maxWidth: '600px' }}>
                                 {t('recommend.subtitle')}
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            {/* Glassmorphism Interactive Form */}
-            <div className="container position-relative" style={{ marginTop: '-120px', zIndex: 10 }}>
-                <div className="row justify-content-center">
-                    <div className="col-lg-9 text-center animate__animated animate__zoomIn">
-                        <div className="card border-0 shadow-2xl rounded-4" style={{ background: 'var(--glass-card-bg)', backdropFilter: 'blur(20px)' }}>
-                            <div className="card-body p-4 p-md-5">
-                                <form onSubmit={handleRecommend}>
-                                    <div className="row g-4 justify-content-center">
-                                        <div className="col-md-6">
-                                            <div className="form-group text-start">
-                                                <label className={`form-label fw-bold  mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
-                                                    <div className={`d-inline-flex align-items-center justify-content-center text-white bg-primary rounded-circle shadow-sm ${isRtl ? 'ms-2' : 'me-2'}`} style={{ width: '35px', height: '35px' }}>
-                                                        <i className="fas fa-laptop-code small"></i>
-                                                    </div>
-                                                    {t('recommend.skills_label')}
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    className={`form-control form-control-lg border-2 bg-light shadow-inner rounded-3 py-3 ${isRtl ? 'text-end' : ''}`}
-                                                    placeholder={t('recommend.skills_placeholder')}
-                                                    value={selectedSkills}
-                                                    onChange={(e) => setSelectedSkills(e.target.value)}
-                                                    required
-                                                    style={{ transition: 'all 0.3s ease' }}
-                                                />
-                                                <small className={`text-muted mt-2 d-block ${isRtl ? 'text-end' : 'text-start'}`}>
-                                                    <i className={`fas fa-info-circle opacity-50 ${isRtl ? 'ms-1' : 'me-1'}`}></i> {t('recommend.skills_hint')}
-                                                </small>
-                                            </div>
+                            {/* Stacked Minimalist Form */}
+                            <form onSubmit={handleRecommend} className="animate__animated animate__fadeInUp animate__delay-1s w-100" style={{ maxWidth: '520px' }}>
+                                <div className="mb-4">
+                                    <label className="fw-bold fs-6 mb-2 text-dark">{t('recommend.skills_label')}</label>
+                                    <div className="position-relative">
+                                        <div className={`position-absolute top-50 translate-middle-y ${isRtl ? 'pe-4' : 'ps-4'}`}>
+                                            <i className="fas fa-laptop-code text-primary opacity-50"></i>
                                         </div>
-
-                                        <div className="col-md-6">
-                                            <div className="form-group text-start">
-                                                <label className={`form-label fw-bold  mb-3 px-1 fs-5 ${isRtl ? 'w-100 text-end' : ''}`}>
-                                                    <div className={`d-inline-flex align-items-center justify-content-center text-white bg-secondary rounded-circle shadow-sm ${isRtl ? 'ms-2' : 'me-2'}`} style={{ width: '35px', height: '35px' }}>
-                                                        <i className="fas fa-lightbulb small"></i>
-                                                    </div>
-                                                    {t('recommend.interests_label')}
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    className={`form-control form-control-lg border-2 bg-light shadow-inner rounded-3 py-3 ${isRtl ? 'text-end' : ''}`}
-                                                    placeholder={t('recommend.interests_placeholder')}
-                                                    value={selectedInterests}
-                                                    onChange={(e) => setSelectedInterests(e.target.value)}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="col-12 mt-5">
-                                            <button
-                                                type="submit"
-                                                className="btn btn-primary btn-lg rounded-pill px-5 py-3 fw-bold text-white shadow-lg w-100 w-md-75 hover-translate"
-                                                disabled={isAnalyzing}
-                                                style={{ background: 'linear-gradient(45deg, var(--primary), var(--secondary))', border: 'none', letterSpacing: '1px' }}
-                                            >
-                                                {isAnalyzing ? (
-                                                    <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                                ) : (
-                                                    <i className={`fas fa-magic ${isRtl ? 'ms-2' : 'me-2'}`}></i>
-                                                )}
-                                                {isAnalyzing ? (isRtl ? 'جاري التحليل المعرفي...' : 'Synthesizing Data...') : t('recommend.button')}
-                                            </button>
-                                        </div>
+                                        <input
+                                            type="text"
+                                            className={`form-control form-control-lg bg-light border-0 py-3 shadow-none focus-ring ${isRtl ? 'pe-5' : 'ps-5'}`}
+                                            placeholder={t('recommend.skills_placeholder')}
+                                            value={selectedSkills}
+                                            onChange={(e) => setSelectedSkills(e.target.value)}
+                                            required
+                                            style={{ borderRadius: '12px' }}
+                                        />
                                     </div>
-                                </form>
+                                </div>
+                                
+                                <div className="mb-4">
+                                    <label className="fw-bold fs-6 mb-2 text-dark">{t('recommend.interests_label')}</label>
+                                    <div className="position-relative">
+                                        <div className={`position-absolute top-50 translate-middle-y ${isRtl ? 'pe-4' : 'ps-4'}`}>
+                                            <i className="fas fa-lightbulb text-secondary opacity-50"></i>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className={`form-control form-control-lg bg-light border-0 py-3 shadow-none focus-ring ${isRtl ? 'pe-5' : 'ps-5'}`}
+                                            placeholder={t('recommend.interests_placeholder')}
+                                            value={selectedInterests}
+                                            onChange={(e) => setSelectedInterests(e.target.value)}
+                                            style={{ borderRadius: '12px' }}
+                                        />
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary w-100 fw-bold border-0 hover-translate d-flex align-items-center justify-content-center mt-3"
+                                    disabled={isAnalyzing}
+                                    style={{ background: 'var(--primary-blue)', borderRadius: '12px', padding: '16px 20px', fontSize: '17px' }}
+                                >
+                                    {isAnalyzing ? (
+                                        <><span className="spinner-border spinner-border-sm me-3" role="status"></span>{isRtl ? 'جاري التحليل...' : 'Analyzing...'}</>
+                                    ) : (
+                                        <>{t('recommend.button')} <i className={`fas fa-arrow-${isRtl ? 'left' : 'right'} ${isRtl ? 'me-3' : 'ms-3'}`}></i></>
+                                    )}
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <div className="col-lg-6 d-none d-lg-block">
+                            <div className="position-relative w-100 animate__animated animate__zoomIn" style={{ height: '550px' }}>
+                                {/* Abstract Graphic Element */}
+                                <div className="position-absolute top-50 start-50 translate-middle w-100 h-100" style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(255,255,255,0) 70%)' }}></div>
+                                <div className="position-absolute rounded-circle shadow-lg d-flex align-items-center justify-content-center hover-float" style={{ width: '130px', height: '130px', background: '#fff', top: '15%', left: '15%', zIndex: 2, border: '1px solid #f1f5f9' }}>
+                                    <i className="fas fa-chart-line text-primary" style={{ fontSize: '3rem' }}></i>
+                                </div>
+                                <div className="position-absolute rounded-circle shadow-lg d-flex align-items-center justify-content-center hover-float" style={{ width: '180px', height: '180px', background: 'linear-gradient(135deg, #2563eb, #8b5cf6)', top: '35%', right: '10%', zIndex: 3, animationDelay: '0.4s' }}>
+                                    <i className="fas fa-brain text-white" style={{ fontSize: '4rem' }}></i>
+                                </div>
+                                <div className="position-absolute rounded-circle shadow-lg d-flex align-items-center justify-content-center hover-float" style={{ width: '110px', height: '110px', background: '#fff', bottom: '15%', left: '35%', zIndex: 2, border: '1px solid #f1f5f9', animationDelay: '0.8s' }}>
+                                    <i className="fas fa-bullseye text-warning" style={{ fontSize: '2.5rem' }}></i>
+                                </div>
+                                {/* Decorative line paths */}
+                                <svg width="100%" height="100%" className="position-absolute top-0 start-0 z-index-0 opacity-25" style={{ pointerEvents: 'none' }}>
+                                    <path d="M 80 200 Q 250 100 450 300 T 800 150" fill="none" stroke="#2563eb" strokeWidth="2" strokeDasharray="10 10" />
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -174,8 +170,8 @@ const UserRecommendation = () => {
                             <div className="spinner-grow text-primary mb-4" style={{ width: '4rem', height: '4rem' }} role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
-                            <h3 className="fw-bold  animate__animated animate__pulse animate__infinite">
-                                {isRtl ? 'جاري تحليل ذكاء الأعمال وصياغة التوصيات...' : 'Analyzing Patterns & Crafting Recommendations...'}
+                            <h3 className="fw-black animate__animated animate__pulse animate__infinite" style={{ background: 'linear-gradient(135deg, #8b5cf6, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                {isRtl ? 'جاري تحليل التوافق الذكي وصياغة التوصيات...' : 'Analyzing Patterns & Crafting AI Recommendations...'}
                             </h3>
                             <p className="text-muted mt-2"><i className="fas fa-microchip me-2"></i>CareerPilot AI Engine V2.0</p>
                         </div>
@@ -220,13 +216,13 @@ const UserRecommendation = () => {
                                                     </div>
 
                                                     <div className="position-absolute bottom-0 start-0 w-100 p-4 pb-3 text-white">
-                                                        <div className={`d-flex align-items-center mb-2 ${isRtl ? 'flex-row-reverse' : ''}`}>
+                                                        <div className="d-flex align-items-center mb-2">
                                                             <span className="badge bg-secondary text-white px-3 py-1 rounded-pill">
-                                                                <i className={`fas fa-layer-group ${isRtl ? 'ms-1' : 'me-1'}`}></i>
+                                                                <i className="fas fa-layer-group me-1"></i>
                                                                 {path.industry}
                                                             </span>
                                                         </div>
-                                                        <h4 className={`text-white mb-0 fw-bold ${isRtl ? 'text-end' : 'text-start'}`} style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{path.title}</h4>
+                                                        <h4 className="text-white mb-0 fw-bold" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{path.title}</h4>
                                                     </div>
                                                 </div>
 
@@ -257,8 +253,8 @@ const UserRecommendation = () => {
                                                     </div>
                                                 </div>
 
-                                                <div className="card-footer bg-white border-top border-light p-4 pt-3">
-                                                    <button className="btn btn-outline-primary w-100 rounded-pill py-2 fw-bold hover-fill border-2" style={{ transition: 'all 0.3s ease' }}>
+                                                <div className="card-footer bg-white border-0 mt-auto p-4 pt-2">
+                                                    <button className="w-100 rounded-pill py-2 fw-bold" style={{ background: 'rgba(37, 99, 235, 0.1)', color: '#2563eb', border: 'none', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #2563eb, #8b5cf6)'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.3)'; }} onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(37, 99, 235, 0.1)'; e.currentTarget.style.color = '#2563eb'; e.currentTarget.style.boxShadow = 'none'; }}>
                                                         {t('industries.actions.explore')} <i className={`fas fa-arrow-${isRtl ? 'left' : 'right'} ${isRtl ? 'me-2' : 'ms-2'}`}></i>
                                                     </button>
                                                 </div>
@@ -286,46 +282,21 @@ const UserRecommendation = () => {
                 </div>
             )}
 
-            <style jsx="true">{`
-                .recommendation-page {
-                    min-height: 100vh;
-                }
-                .hover-translate {
-                    transition: all 0.3s ease;
-                }
-                .hover-translate:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 30px rgba(42, 82, 190, 0.3) !important;
-                }
-                .transform-hover {
-                    transition: transform 0.3s ease;
-                }
-                .transform-hover:hover {
-                    transform: scale(1.1);
-                }
-                .bg-primary-soft {
-                    background-color: rgba(42, 82, 190, 0.1);
-                }
-                .shadow-inner {
-                    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
-                }
-                .fw-black {
-                    font-weight: 900;
-                }
-                .form-control:focus {
-                    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 0 0 4px rgba(42, 82, 190, 0.1) !important;
-                    border-color: var(--primary) !important;
-                    background-color: #fff !important;
-                }
-                .animate__animated {
-                    animation-duration: 0.8s;
-                }
-                @media (max-width: 768px) {
-                    .display-4 {
-                        font-size: 2.2rem;
-                    }
-                }
-            `}</style>
+            <style dangerouslySetInnerHTML={{ __html: `
+                .recommendation-page { min-height: 100vh; }
+                .hover-translate { transition: all 0.3s ease; }
+                .hover-translate:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2) !important; }
+                .transform-hover { transition: transform 0.3s ease; }
+                .transform-hover:hover { transform: scale(1.1); }
+                .bg-primary-soft { background-color: rgba(37, 99, 235, 0.1); }
+                .shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04); }
+                .fw-black { font-weight: 900; }
+                .form-control.focus-ring:focus { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important; }
+                .hover-float { transition: transform 0.3s ease; }
+                .hover-float:hover { transform: translateY(-10px); }
+                .animate__animated { animation-duration: 0.8s; }
+                @media (max-width: 768px) { .display-4 { font-size: 2.2rem; } }
+            `}} />
         </div>
     );
 };

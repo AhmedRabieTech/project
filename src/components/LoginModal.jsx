@@ -329,9 +329,9 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                                     {isRtl ? '8 أحرف، حرف كبير وصغير، رقم، ورمز خاص' : '8+ chars, uppercase, lowercase, number & special char'}
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-lg mb-3" disabled={loading}>
+                            <button type="submit" className="premium-submit-btn register-btn w-100 mb-3" disabled={loading}>
                                 {loading ? <span className="spinner-border spinner-border-sm me-2"></span> : <i className="fas fa-rocket me-2"></i>}
-                                {isRtl ? 'ارسال' : 'Get Started Now'}
+                                {isRtl ? 'إنشاء حساب جديد' : 'Get Started Now'}
                             </button>
                             <div className="text-center mt-3">
                                 <button type="button" className="btn btn-link text-decoration-none text-primary small fw-bold" onClick={() => { setStep(3); setError(''); }}>
@@ -369,9 +369,9 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                                 </div>
                                 {renderPasswordInput(false)}
                             </div>
-                            <button type="submit" className="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-lg mb-3" disabled={loading}>
+                            <button type="submit" className="premium-submit-btn login-btn w-100 mb-3" disabled={loading}>
                                 {loading ? <span className="spinner-border spinner-border-sm me-2"></span> : <i className="fas fa-sign-in-alt me-2"></i>}
-                                {isRtl ? 'تسجيل دخول آمن' : 'Secure Sign In'}
+                                {isRtl ? 'تسجيل الدخول' : 'Secure Sign In'}
                             </button>
                             <div className="text-center mt-3 d-flex justify-content-between px-2">
                                 <button type="button" className="btn btn-link text-decoration-none text-muted small fw-bold" onClick={() => setStep(1)}>
@@ -458,6 +458,59 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess, initialStep = 1 }) => {
                 .bg-warning { background-color: #f59e0b !important; }
                 .text-danger { color: #ef4444 !important; }
                 .bg-danger { background-color: #ef4444 !important; }
+                
+                /* Premium Submit Buttons */
+                .premium-submit-btn {
+                    position: relative;
+                    overflow: hidden;
+                    border: none;
+                    border-radius: 16px;
+                    padding: 16px 24px;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                    cursor: pointer;
+                    z-index: 1;
+                }
+                .premium-submit-btn.register-btn {
+                    background: linear-gradient(135deg, #2563eb, #8b5cf6);
+                    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+                }
+                .premium-submit-btn.login-btn {
+                    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+                    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+                }
+                .premium-submit-btn::before {
+                    content: '';
+                    position: absolute;
+                    top: 0; left: -100%;
+                    width: 50%; height: 100%;
+                    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+                    transform: skewX(-25deg);
+                    animation: shine 3s infinite;
+                    z-index: -1;
+                }
+                @keyframes shine {
+                    0% { left: -100%; }
+                    20% { left: 200%; }
+                    100% { left: 200%; }
+                }
+                .premium-submit-btn:hover {
+                    transform: translateY(-3px) scale(1.02);
+                }
+                .premium-submit-btn.register-btn:hover {
+                    box-shadow: 0 12px 30px rgba(139, 92, 246, 0.45);
+                }
+                .premium-submit-btn.login-btn:hover {
+                    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+                }
+                .premium-submit-btn:active {
+                    transform: translateY(1px);
+                }
             `}} />
         </div>
     );
